@@ -66,7 +66,7 @@ class GradeForm extends React.Component {
         </div>
         <div className="d-flex justify-content-around">
           <button type="submit" className="btn btn-primary">Submit</button>
-          <button className="btn btn-secondary" onClick={ this.handleCancel }>Cancel</button>
+          <button type="reset" className="btn btn-secondary" onClick={ this.handleCancel }>Cancel</button>
         </div>
       </form>
     );
