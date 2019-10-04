@@ -6,9 +6,14 @@ import GradeForm from './gradeform';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { grades: [] };
+    this.state = {
+      grades: [],
+      currentStudent: null
+    };
     this.addStudent = this.addStudent.bind(this);
     this.deleteStudent = this.deleteStudent.bind(this);
+    this.updateStudentID = this.updateStudentID.bind(this);
+    this.submitEdit = this.submitEdit.bind(this);
   }
   componentDidMount() {
     this.getAllGrades();
@@ -38,6 +43,21 @@ class App extends React.Component {
         this.setState({ grades: newArray });
       });
   }
+  submitEdit(student) {
+    fetch(`/api/grades/${student.id}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(student) })
+      .then(result => result.json())
+      .then(result => {
+        let newArray = this.state.grades.map(element => {
+          if (element.id === result.id) {
+            element.name = result.name;
+            element.course = result.course;
+            element.grade = result.grade;
+          }
+          return element;
+        });
+        this.setState({ grades: newArray });
+      });
+  }
   getAverageGrades() {
     let totalGrade = 0;
     if (!this.state.grades.length) {
@@ -49,14 +69,17 @@ class App extends React.Component {
       return Math.round(totalGrade / this.state.grades.length);
     }
   }
+  updateStudentID(student) {
+    this.setState({ currentStudent: student });
+  }
   render() {
     const average = this.getAverageGrades();
     return (
       <div className = "container-fluid">
         <Header text = "Student Grade Table" average = { average } />
         <div className="d-flex">
-          <GradeTable grades = { this.state.grades } onDelete = { this.deleteStudent }/>
-          <GradeForm onSubmit = { this.addStudent } />
+          <GradeTable grades = { this.state.grades } onDelete = { this.deleteStudent } onUpdate = { this.updateStudentID }/>
+          <GradeForm onSubmit = { this.addStudent } currentStudent = { this.state.currentStudent } onUpdate = { this.submitEdit }/>
         </div>
       </div>
     );

@@ -19,6 +19,7 @@ class GradeTable extends React.Component {
             course={element.course}
             grade={element.grade}
             onDelete={this.props.onDelete}
+            onUpdate={this.props.onUpdate}
           />
         );
       });
