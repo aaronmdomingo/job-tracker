@@ -31,13 +31,13 @@ class GradeForm extends React.Component {
 
     switch (eventTarget) {
       case 'Name':
-        this.setState({ name: event.target.value, isEdit: true });
+        this.setState({ name: event.target.value });
         break;
       case 'Course':
-        this.setState({ course: event.target.value, isEdit: true });
+        this.setState({ course: event.target.value });
         break;
       case 'Grade':
-        this.setState({ grade: event.target.value, isEdit: true });
+        this.setState({ grade: event.target.value });
         break;
     }
   }
