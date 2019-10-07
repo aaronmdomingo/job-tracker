@@ -48,12 +48,7 @@ class App extends React.Component {
       .then(result => result.json())
       .then(result => {
         let newArray = this.state.grades.map(element => {
-          if (element.id === result.id) {
-            element.name = result.name;
-            element.course = result.course;
-            element.grade = result.grade;
-          }
-          return element;
+          return element.id === result.id ? result : element;
         });
         this.setState({ grades: newArray });
       });
