@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter, Redirect } from 'react-router-dom';
 import Header from './header';
 import Jobtable from './jobtable';
+import JobForm from './jobform';
 
 class DashBoard extends React.Component {
   constructor(props) {
@@ -21,8 +22,9 @@ class DashBoard extends React.Component {
     return (
       <div className="dashboard__page container-fluid h-100 d-flex flex-column justify-content-around align-items-center">
         <Header />
-        <h3 className="w-100 d-flex justify-content-center align-items-center mb-4"> {this.props.currentUser.userName} </h3>
+        <h3 className="w-100 d-flex justify-content-center align-items-center"> {this.props.currentUser.userName} </h3>
         <Jobtable jobArray={jobArray}/>
+        <JobForm/>
       </div>
     );
   }

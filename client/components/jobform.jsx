@@ -1,6 +1,7 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
-class GradeForm extends React.Component {
+class JobForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -81,7 +82,7 @@ class GradeForm extends React.Component {
     if (!inEdit) {
       buttonName = 'Submit';
       clickMethod = this.handleSubmit;
-      buttonClass = 'btn btn-primary';
+      buttonClass = 'btn btn-light';
     } else {
       buttonName = 'Update';
       clickMethod = this.submitUpdate;
@@ -89,20 +90,20 @@ class GradeForm extends React.Component {
     }
 
     return (
-      <form onSubmit={ clickMethod } className = "w-25 ml-2 d-flex flex-column justify-content-start">
-        <div className="form-group d-flex align-items-center">
-          <i className="fa fa-user w-25 p-2"></i>
-          <input value={ name } onChange={ this.handleChange } type="text" className="form-control" placeholder="Name" required />
+      <form onSubmit={ clickMethod } className = "h-25 w-100 d-flex flex-column justify-content-center">
+        <div className="form-group d-flex align-items-center justify-content-around">
+          <i className="icon text-white fas fa-building w-25 p-2 d-flex justify-content-center align-items-center"></i>
+          <input value={ name } onChange={ this.handleChange } type="text" className="form-control job__input" placeholder="Company Name" required />
         </div>
-        <div className="form-group d-flex align-items-center">
-          <i className="fa fa-book w-25 p-2"></i>
-          <input value={ course } onChange={ this.handleChange } type="text" className="form-control" placeholder="Course" required />
+        <div className="form-group d-flex align-items-center justify-content-around">
+          <i className="icon text-white fas fa-folder w-25 p-2 d-flex justify-content-center align-items-center"></i>
+          <input value={ course } onChange={ this.handleChange } type="text" className="form-control job__input" placeholder="Status" required />
         </div>
-        <div className="form-group d-flex align-items-center">
-          <i className="fa fa-graduation-cap w-25 p-2"></i>
-          <input value={ grade } onChange={ this.handleChange } type="number" className="form-control" placeholder="Grade" min="0" max="100" required />
+        <div className="form-group d-flex align-items-center justify-content-around">
+          <i className="icon text-white fas fa-comment w-25 p-2 d-flex justify-content-center align-items-center"></i>
+          <input value={ grade } onChange={ this.handleChange } type="number" className="form-control job__input" placeholder="Comments" min="0" max="100" required />
         </div>
-        <div className="d-flex justify-content-around">
+        <div className="d-flex align-items-center justify-content-around">
           <button type="submit" className={buttonClass}>{ buttonName }</button>
           <button type="reset" className="btn btn-secondary" onClick={ this.handleCancel }>Cancel</button>
         </div>
@@ -111,4 +112,4 @@ class GradeForm extends React.Component {
   }
 }
 
-export default GradeForm;
+export default withRouter(JobForm);

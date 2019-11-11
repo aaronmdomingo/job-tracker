@@ -8,38 +8,39 @@ class JobTable extends React.Component {
     let element;
     if (!jobs.length) {
       element =
-      <tr>
-        <th scope="row"> No Grades Recorded </th>
-      </tr>;
+      <div className="no__job rounded w-100 h-50 d-flex align-items-center justify-content-center">
+        <h2> Currently no jobs listed </h2>
+      </div>;
     } else {
-      element = this.props.grades.map(element => {
-        return (
-          <Job key={element.id}
-            studentID = { element.id }
-            name={element.name}
-            course={element.course}
-            grade={element.grade}
-            onDelete={this.props.onDelete}
-            onUpdate={this.props.onUpdate}
-          />
-        );
-      });
-    }
-
-    return (
-      <table className = "table table-striped table-borderless table-hover">
+      element =
+      <table className = "table table-striped table-borderless table-hover h-50 w-100">
         <thead className = "thead-dark">
           <tr>
-            <th scope="col"> Company Name</th>
-            <th scope="col"> Status </th>
-            <th scope="col"> Comments</th>
+            <th scope="col w-25"> Company </th>
+            <th scope="col w-25"> Status </th>
+            <th scope="col w-25"> Comments </th>
+            <th scope="col w-25"> Actions </th>
           </tr>
         </thead>
         <tbody>
-          { element }
+          {
+            jobs.map(element => {
+              return (
+                <Job key={element.id}
+                  studentID = { element.id }
+                  name={element.name}
+                  course={element.course}
+                  grade={element.grade}
+                  onDelete={this.props.onDelete}
+                  onUpdate={this.props.onUpdate}
+                />
+              );
+            })
+          }
         </tbody>
-      </table>
-    );
+      </table>;
+    }
+    return (element);
   }
 }
 

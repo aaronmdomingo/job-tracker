@@ -13,3 +13,26 @@
   width: 7rem;
   border-radius: 2rem;
 }
+
+.btn-mini {
+  width: 5rem;
+  border-radius: 2rem;
+}
+
+.form-control:focus {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+th {
+  font-size: 2vw !important;
+}
+
+.icon {
+  font-size: 4vw !important;
+}
+
+.no__job {
+  background-color: rgb(255, 255, 255, 0.6);
+}
