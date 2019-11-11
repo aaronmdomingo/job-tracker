@@ -9,6 +9,20 @@
   background-size: cover;
 }
 
+.dashboard__table {
+  overflow: scroll;
+}
+
+.table__header {
+  height: 2rem !important;
+  position: sticky !important;
+  top: 0;
+}
+
+.table__input {
+  height: 5rem !important;
+}
+
 .btn {
   width: 7rem;
   border-radius: 2rem;
@@ -16,7 +30,14 @@
 
 .btn-mini {
   width: 5rem;
+  height: 1.5rem;
   border-radius: 2rem;
+}
+
+.btn:focus,
+.btn-mini:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .form-control:focus {
