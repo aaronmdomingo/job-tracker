@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 
 class DashBoard extends React.Component {
   constructor(props) {
@@ -11,6 +11,9 @@ class DashBoard extends React.Component {
   componentDidMount() {
   }
   render() {
+    if (!this.props.isLoggedIn) {
+      return <Redirect path='/'> </Redirect>;
+    }
     return (
       <h1>Test</h1>
     );
