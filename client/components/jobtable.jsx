@@ -8,18 +8,18 @@ class JobTable extends React.Component {
     let element;
     if (!jobs.length) {
       element =
-      <div className="no__job rounded w-100 h-50 d-flex align-items-center justify-content-center">
-        <h2> Currently no jobs listed </h2>
+      <div className="no__job rounded w-100 h-100 d-flex align-items-center justify-content-center">
+        <h3> Currently no jobs listed </h3>
       </div>;
     } else {
       element =
-      <table className = "table table-striped table-borderless table-hover h-50 w-100">
+      <table className = "table table-striped table-borderless table-hover h-100 w-100">
         <thead className = "thead-dark">
           <tr>
-            <th scope="col w-25"> Company </th>
-            <th scope="col w-25"> Status </th>
-            <th scope="col w-25"> Comments </th>
-            <th scope="col w-25"> Actions </th>
+            <th scope="w-25" className="text-center table__header"> Company </th>
+            <th scope="w-25" className="text-center table__header"> Status </th>
+            <th scope="w-25" className="text-center table__header"> Comments </th>
+            <th scope="w-25" className="text-center table__header"> Actions </th>
           </tr>
         </thead>
         <tbody>

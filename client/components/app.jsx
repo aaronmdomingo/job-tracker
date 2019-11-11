@@ -96,7 +96,7 @@ class App extends React.Component {
             <LandingPage setCurrentUser={this.setCurrentUser} logInUser={this.logInUser} isLoggedIn={this.state.isLoggedIn} logOutUser={this.logOutUser} currentUser={this.state.currentUser}/>
           </Route>
           <Route path='/dashboard/:user'>
-            <DashBoard isLoggedIn={this.state.isLoggedIn} currentUser={this.state.currentUser}/>
+            <DashBoard isLoggedIn={this.state.isLoggedIn} currentUser={this.state.currentUser} logOutUser={this.logOutUser}/>
           </Route>
           <Route>
             <LandingPage setCurrentUser={this.setCurrentUser} logInUser={this.logInUser} isLoggedIn={this.state.isLoggedIn} logOutUser={this.logOutUser} currentUser={this.state.currentUser} />;
