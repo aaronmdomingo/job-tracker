@@ -1,10 +1,11 @@
 import React from 'react';
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route,
-//   Link
-// } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
+import LandingPage from './landing-page';
+
 // import Header from './header';
 // import GradeTable from './gradetable';
 // import GradeForm from './gradeform';
@@ -14,15 +15,19 @@ class App extends React.Component {
     super(props);
     this.state = {
       isLoggedIn: false,
-      currentUser: null
+      currentUser: null,
+      currentView: 'landing'
     };
     // this.addStudent = this.addStudent.bind(this);
     // this.deleteStudent = this.deleteStudent.bind(this);
     // this.updateStudentID = this.updateStudentID.bind(this);
     // this.submitEdit = this.submitEdit.bind(this);
+    this.setCurrentUser = this.setCurrentUser.bind(this);
   }
-  componentDidMount() {
-    // this.getAllGrades();
+  setCurrentUser(userObj) {
+    this.setState({
+      currentUser: userObj
+    });
   }
   // getAllGrades() {
   //   fetch('/api/grades')
@@ -75,13 +80,15 @@ class App extends React.Component {
   // }
   render() {
     return (
-      <div className = "container-fluid h-100">
-        {/* <Header /> */}
-        {/* <div className="d-flex"> */}
-        {/* <GradeTable grades = { this.state.grades } onDelete = { this.deleteStudent } onUpdate = { this.updateStudentID }/> */}
-        {/* <GradeForm onSubmit = { this.addStudent } currentStudent = { this.state.currentStudent } onUpdate = { this.submitEdit }/> */}
-        {/* </div> */}
-      </div>
+      <Router>
+        <div className="container-fluid">
+        </div>
+        <Switch>
+          <Route exact path='/'>
+            <LandingPage setCurrentUser={this.setCurrentUser}/>
+          </Route>
+        </Switch>
+      </Router>
     );
   }
 }
