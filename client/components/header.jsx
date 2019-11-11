@@ -13,7 +13,7 @@ class Header extends React.Component {
   render() {
     return (
       <div className= "container-fluid p-0 d-flex justify-content-between align-items-center">
-        <h1>Tracker</h1>
+        <h2 className="display-4">Tracker</h2>
         <button className="btn btn-light" onClick={this.logOutUser}>Log out</button>
       </div>
     );
