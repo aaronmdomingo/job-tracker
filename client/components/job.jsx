@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Grade extends React.Component {
+class Job extends React.Component {
   constructor(props) {
     super(props);
     this.handleDelete = this.handleDelete.bind(this);
@@ -34,4 +34,4 @@ class Grade extends React.Component {
   }
 }
 
-export default Grade;
+export default Job;

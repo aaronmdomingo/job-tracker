@@ -1,11 +1,12 @@
 import React from 'react';
-import Grade from './grade';
+import Job from './job';
+import { withRouter } from 'react-router-dom';
 
-class GradeTable extends React.Component {
+class JobTable extends React.Component {
   render() {
-    const grades = this.props.grades;
+    const jobs = this.props.jobArray;
     let element;
-    if (!grades.length) {
+    if (!jobs.length) {
       element =
       <tr>
         <th scope="row"> No Grades Recorded </th>
@@ -13,7 +14,7 @@ class GradeTable extends React.Component {
     } else {
       element = this.props.grades.map(element => {
         return (
-          <Grade key={element.id}
+          <Job key={element.id}
             studentID = { element.id }
             name={element.name}
             course={element.course}
@@ -29,10 +30,9 @@ class GradeTable extends React.Component {
       <table className = "table table-striped table-borderless table-hover">
         <thead className = "thead-dark">
           <tr>
-            <th scope="col"> Student Name</th>
-            <th scope="col"> Course </th>
-            <th scope="col"> Grade </th>
-            <th scope="col"> Operations </th>
+            <th scope="col"> Company Name</th>
+            <th scope="col"> Status </th>
+            <th scope="col"> Comments</th>
           </tr>
         </thead>
         <tbody>
@@ -43,4 +43,4 @@ class GradeTable extends React.Component {
   }
 }
 
-export default GradeTable;
+export default withRouter(JobTable);
