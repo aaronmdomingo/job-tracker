@@ -9,7 +9,7 @@ class JobTable extends React.Component {
     if (!jobs.length) {
       element =
       <div className="no__job rounded w-100 h-50 d-flex align-items-center justify-content-center">
-        <h2> Currently no jobs listed </h2>
+        <h3> Currently no jobs listed </h3>
       </div>;
     } else {
       element =
