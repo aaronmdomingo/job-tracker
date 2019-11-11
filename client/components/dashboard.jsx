@@ -12,8 +12,14 @@ class DashBoard extends React.Component {
     };
   }
   componentDidMount() {
+    this.getJobs();
   }
   getJobs() {
+    fetch(`/api/jobs.php?userName=${this.props.currentUser.userName}`)
+      .then(result => result.json())
+      .then(result => {
+        return result;
+      });
   }
   render() {
     const { jobArray } = this.state;
