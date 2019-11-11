@@ -1,5 +1,2 @@
-.idea
-.vscode
-.DS_Store
-node_modules
-server/public/main.js*
+node_modules/
+/server/public/api/db-connection.php
