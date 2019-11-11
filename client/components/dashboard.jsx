@@ -13,6 +13,8 @@ class DashBoard extends React.Component {
   }
   componentDidMount() {
   }
+  getJobs() {
+  }
   render() {
     const { jobArray } = this.state;
     if (!this.props.isLoggedIn) {
