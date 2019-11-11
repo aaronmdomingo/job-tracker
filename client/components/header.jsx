@@ -3,8 +3,9 @@ import React from 'react';
 class Header extends React.Component {
   render() {
     return (
-      <div className= "mt-2 container-fluid p-0 d-flex justify-content-center align-items-center">
-        <h1>Trckr</h1>
+      <div className= "container-fluid p-0 d-flex justify-content-between align-items-center">
+        <h1>Tracker</h1>
+        <button className="btn btn-light">Log out</button>
       </div>
     );
   }

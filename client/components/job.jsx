@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Grade extends React.Component {
+class Job extends React.Component {
   constructor(props) {
     super(props);
     this.handleDelete = this.handleDelete.bind(this);
@@ -22,16 +22,16 @@ class Grade extends React.Component {
   render() {
     return (
       <tr>
-        <th scope="col"> { this.props.name } </th>
-        <th scope="col"> { this.props.course } </th>
-        <th scope="col"> { this.props.grade } </th>
-        <th scope="col" className="d-flex justify-content-around">
-          <button onClick = { this.handleUpdate } className="btn btn-primary">Update</button>
-          <button onClick = { this.handleDelete } className="btn btn-danger">Delete</button>
+        <th scope="col" className="w-25"> { this.props.name } </th>
+        <th scope="col" className="w-25"> { this.props.course } </th>
+        <th scope="col" className="w-25"> { this.props.grade } </th>
+        <th scope="col" className="h-100 d-flex flex-column justify-content-around align-items-center">
+          <button onClick = { this.handleUpdate } className="btn-mini btn-primary">Update</button>
+          <button onClick = { this.handleDelete } className="btn-mini btn-danger">Delete</button>
         </th>
       </tr>
     );
   }
 }
 
-export default Grade;
+export default Job;

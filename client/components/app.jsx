@@ -5,6 +5,7 @@ import {
   Route
 } from 'react-router-dom';
 import LandingPage from './landing-page';
+import DashBoard from './dashboard';
 
 // import Header from './header';
 // import GradeTable from './gradetable';
@@ -15,19 +16,26 @@ class App extends React.Component {
     super(props);
     this.state = {
       isLoggedIn: false,
-      currentUser: null,
-      currentView: 'landing'
+      currentUser: null
     };
     // this.addStudent = this.addStudent.bind(this);
     // this.deleteStudent = this.deleteStudent.bind(this);
     // this.updateStudentID = this.updateStudentID.bind(this);
     // this.submitEdit = this.submitEdit.bind(this);
     this.setCurrentUser = this.setCurrentUser.bind(this);
+    this.logInUser = this.logInUser.bind(this);
+    this.logOutUser = this.logOutUser.bind(this);
   }
   setCurrentUser(userObj) {
     this.setState({
       currentUser: userObj
     });
+  }
+  logInUser() {
+    this.setState({ isLoggedIn: true });
+  }
+  logOutUser() {
+    this.setState({ isLoggedIn: false });
   }
   // getAllGrades() {
   //   fetch('/api/grades')
@@ -85,7 +93,13 @@ class App extends React.Component {
         </div>
         <Switch>
           <Route exact path='/'>
-            <LandingPage setCurrentUser={this.setCurrentUser}/>
+            <LandingPage setCurrentUser={this.setCurrentUser} logInUser={this.logInUser} isLoggedIn={this.state.isLoggedIn} logOutUser={this.logOutUser} currentUser={this.state.currentUser}/>
+          </Route>
+          <Route path='/dashboard/:user'>
+            <DashBoard isLoggedIn={this.state.isLoggedIn} currentUser={this.state.currentUser}/>
+          </Route>
+          <Route>
+            <LandingPage setCurrentUser={this.setCurrentUser} logInUser={this.logInUser} isLoggedIn={this.state.isLoggedIn} logOutUser={this.logOutUser} currentUser={this.state.currentUser} />;
           </Route>
         </Switch>
       </Router>
