@@ -5,6 +5,7 @@ import {
   Route
 } from 'react-router-dom';
 import LandingPage from './landing-page';
+import DashBoard from './dashboard';
 
 // import Header from './header';
 // import GradeTable from './gradetable';
@@ -23,11 +24,15 @@ class App extends React.Component {
     // this.updateStudentID = this.updateStudentID.bind(this);
     // this.submitEdit = this.submitEdit.bind(this);
     this.setCurrentUser = this.setCurrentUser.bind(this);
+    this.logInuser = this.logInuser.bind(this);
   }
   setCurrentUser(userObj) {
     this.setState({
       currentUser: userObj
     });
+  }
+  logInuser() {
+    this.setState({ isLoggedIn: true });
   }
   // getAllGrades() {
   //   fetch('/api/grades')
@@ -86,6 +91,9 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/'>
             <LandingPage setCurrentUser={this.setCurrentUser}/>
+          </Route>
+          <Route path='/dashboard/:user'>
+            <DashBoard/>
           </Route>
         </Switch>
       </Router>
