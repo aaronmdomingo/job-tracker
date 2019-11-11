@@ -8,7 +8,7 @@ class DashBoard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      jobArray: [1, 2, 3, 4, 5, 6]
+      jobArray: []
     };
   }
   componentDidMount() {
