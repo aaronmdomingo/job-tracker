@@ -100,12 +100,12 @@ class JobForm extends React.Component {
           <i className="icon text-white fas fa-folder w-25 p-2 d-flex justify-content-center align-items-center"></i>
           <select value={ status }className="form-control text-center" name="status" onChange={this.handleChange} required>
             <option value="">Options</option>
-            <option value="Applied">Applied</option>
-            <option value="In Progress">In Progress</option>
-            <option value="Follow Up">Follow Up</option>
+            <option value="Applied / In Progress">Applied / In Progress</option>
+            <option value="Followed Up">Followed Up</option>
             <option value="Interview">Interview</option>
             <option value="Offer">Offer</option>
-            <option value="Declined">Declined</option>
+            <option value="Withdrawn">Withdrawn</option>
+            <option value="Denied">Denied</option>
           </select>
         </div>
         <div className="form-group d-flex align-items-center justify-content-around">
