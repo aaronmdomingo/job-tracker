@@ -14,7 +14,7 @@
             require_once('jobs-get.php');
             break;
         case 'PATCH':
-            // require_once('user-add-gym.php');
+            require_once('jobs-patch.php');
             break;
         case 'DELETE':
             require_once('jobs-delete.php');
