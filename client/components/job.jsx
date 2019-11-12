@@ -28,7 +28,7 @@ class Job extends React.Component {
     const { inEdit } = this.state;
 
     let button = inEdit
-      ? <th scope="col" className="h-100 d-flex flex-column justify-content-between align-items-center">
+      ? <th scope="col" className="h-100 d-flex flex-column justify-content-around align-items-center">
         <button onClick={this.handleUpdate} className="btn-mini btn-primary">Update</button>
         <button onClick={this.handleDelete} className="btn-mini btn-danger">Delete</button>
       </th>
@@ -38,9 +38,9 @@ class Job extends React.Component {
 
     return (
       <tr className="table__input">
-        <th className="w-25"> { this.props.name } </th>
-        <th className="w-25"> { this.props.course } </th>
-        <th className="w-25"> { this.props.grade } </th>
+        <th className="w-25 text-center align-middle"> { this.props.company } </th>
+        <td className="w-25 text-center align-middle"> { this.props.status } </td>
+        <td className="w-25"> { this.props.comments } </td>
         { button }
       </tr>
     );

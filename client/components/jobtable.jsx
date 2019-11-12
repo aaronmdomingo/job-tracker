@@ -27,12 +27,12 @@ class JobTable extends React.Component {
             jobs.map(element => {
               return (
                 <Job key={element.id}
-                  studentID = { element.id }
-                  name={element.name}
-                  course={element.course}
-                  grade={element.grade}
-                  onDelete={this.props.onDelete}
-                  onUpdate={this.props.onUpdate}
+                  jobID = { element.id }
+                  userName={element.user_name}
+                  company={element.company}
+                  status={element.status}
+                  comments={element.comments}
+                  date={element}
                 />
               );
             })
