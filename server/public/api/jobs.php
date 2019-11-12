@@ -17,7 +17,7 @@
             // require_once('user-add-gym.php');
             break;
         case 'DELETE':
-            // require_once('user-delete-gym.php');
+            require_once('jobs-delete.php');
             break;
     }
 
