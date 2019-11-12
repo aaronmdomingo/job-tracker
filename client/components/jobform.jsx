@@ -8,6 +8,9 @@ class JobForm extends React.Component {
       company: '',
       status: '',
       comments: '',
+      userName: '',
+      date: '',
+      jobID: '',
       inEdit: false
     };
     this.handleChange = this.handleChange.bind(this);
@@ -17,11 +20,14 @@ class JobForm extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.currentStudent !== prevProps.currentStudent) {
+    if (this.props.currentJob !== prevProps.currentJob) {
       this.setState({
-        name: this.props.currentStudent.name,
-        course: this.props.currentStudent.course,
-        grade: this.props.currentStudent.grade,
+        company: this.props.currentJob.company,
+        status: this.props.currentJob.status,
+        comments: this.props.currentJob.comments,
+        userName: this.props.currentJob.userName,
+        date: this.props.currentJob.date,
+        jobID: this.props.currentJob.id,
         inEdit: true
       });
     }
@@ -87,7 +93,7 @@ class JobForm extends React.Component {
     } else {
       buttonName = 'Update';
       clickMethod = this.submitUpdate;
-      buttonClass = 'btn btn-success';
+      buttonClass = 'btn btn-primary';
     }
 
     return (

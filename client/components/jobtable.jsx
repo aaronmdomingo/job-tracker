@@ -32,8 +32,9 @@ class JobTable extends React.Component {
                   company={element.company}
                   status={element.status}
                   comments={element.comments}
-                  date={element}
+                  date={element.date}
                   deleteJob={this.props.deleteJob}
+                  initiateUpdate={this.props.initiateUpdate}
                 />
               );
             })
