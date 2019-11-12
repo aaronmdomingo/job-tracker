@@ -5,9 +5,9 @@ class JobForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      course: '',
-      grade: '',
+      company: '',
+      status: '',
+      comments: '',
       inEdit: false
     };
     this.handleChange = this.handleChange.bind(this);
@@ -28,17 +28,17 @@ class JobForm extends React.Component {
   }
 
   handleChange(event) {
-    let eventTarget = event.target.placeholder;
+    let eventTarget = event.target.name;
 
     switch (eventTarget) {
-      case 'Name':
-        this.setState({ name: event.target.value });
+      case 'company':
+        this.setState({ company: event.target.value });
         break;
-      case 'Course':
-        this.setState({ course: event.target.value });
+      case 'status':
+        this.setState({ status: event.target.value });
         break;
-      case 'Grade':
-        this.setState({ grade: event.target.value });
+      case 'comments':
+        this.setState({ comments: event.target.value });
         break;
     }
   }
@@ -68,15 +68,15 @@ class JobForm extends React.Component {
 
   handleCancel() {
     this.setState({
-      name: '',
-      course: '',
-      grade: '',
+      company: '',
+      status: '',
+      comments: '',
       inEdit: false
     });
   }
 
   render() {
-    let { name, course, grade, inEdit } = this.state;
+    let { company, status, comments, inEdit } = this.state;
     let buttonName, clickMethod, buttonClass;
 
     if (!inEdit) {
@@ -90,18 +90,26 @@ class JobForm extends React.Component {
     }
 
     return (
-      <form onSubmit={ clickMethod } className = "h-25 w-100 d-flex flex-column justify-content-center">
+      <form onSubmit={ clickMethod } className = "w-100 d-flex flex-column justify-content-center">
         <div className="form-group d-flex align-items-center justify-content-around">
           <i className="icon text-white fas fa-building w-25 p-2 d-flex justify-content-center align-items-center"></i>
-          <input value={ name } onChange={ this.handleChange } type="text" className="form-control job__input" placeholder="Company Name" required />
+          <input value={ company } name="company" onChange={ this.handleChange } type="text" className="form-control" placeholder="Company Name" required />
         </div>
         <div className="form-group d-flex align-items-center justify-content-around">
           <i className="icon text-white fas fa-folder w-25 p-2 d-flex justify-content-center align-items-center"></i>
-          <input value={ course } onChange={ this.handleChange } type="text" className="form-control job__input" placeholder="Status" required />
+          <select value={ status }className="form-control text-center" name="status" onChange={this.handleChange} required>
+            <option value="">Options</option>
+            <option value="Applied">Applied</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Follow Up">Follow Up</option>
+            <option value="Interview">Interview</option>
+            <option value="Offer">Offer</option>
+            <option value="Declined">Declined</option>
+          </select>
         </div>
         <div className="form-group d-flex align-items-center justify-content-around">
           <i className="icon text-white fas fa-comment w-25 p-2 d-flex justify-content-center align-items-center"></i>
-          <input value={ grade } onChange={ this.handleChange } type="number" className="form-control job__input" placeholder="Comments" min="0" max="100" required />
+          <input value={ comments } name="comments" onChange={ this.handleChange } className="form-control" placeholder="Comments" min="0" max="100" required />
         </div>
         <div className="d-flex align-items-center justify-content-around">
           <button type="submit" className={buttonClass}>{ buttonName }</button>
