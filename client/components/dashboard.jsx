@@ -14,6 +14,7 @@ class DashBoard extends React.Component {
     };
     this.addJob = this.addJob.bind(this);
     this.deleteJob = this.deleteJob.bind(this);
+    this.updateJob = this.updateJob.bind(this);
     this.initiateUpdate = this.initiateUpdate.bind(this);
   }
   componentDidMount() {
@@ -37,6 +38,16 @@ class DashBoard extends React.Component {
   }
   addJob(jobObj) {
     fetch(`/api/jobs.php`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(jobObj) })
+      .then(result => result.json())
+      .then(result => {
+        if (result.success) {
+          this.getJobs();
+        }
+      })
+      .catch(error => alert(error));
+  }
+  updateJob(jobObj) {
+    fetch(`/api/jobs.php`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(jobObj) })
       .then(result => result.json())
       .then(result => {
         if (result.success) {
@@ -71,7 +82,7 @@ class DashBoard extends React.Component {
         <div className="dashboard__table h-50 w-100" id="message--container">
           <Jobtable jobArray={jobArray} deleteJob={this.deleteJob} initiateUpdate={this.initiateUpdate}/>
         </div>
-        <JobForm currentUser={this.props.currentUser} addJob={this.addJob} currentJob={currentJob}/>
+        <JobForm currentUser={this.props.currentUser} addJob={this.addJob} updateJob={this.updateJob} currentJob={currentJob}/>
       </div>
     );
   }

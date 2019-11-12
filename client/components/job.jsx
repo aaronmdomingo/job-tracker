@@ -25,6 +25,7 @@ class Job extends React.Component {
       date: this.props.date
     };
     this.props.initiateUpdate(job);
+    this.setState({ inEdit: false });
   }
   render() {
     const { inEdit } = this.state;

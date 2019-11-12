@@ -63,13 +63,15 @@ class JobForm extends React.Component {
 
   submitUpdate(event) {
     event.preventDefault();
-    const newEntry = {
-      name: this.state.name,
-      course: this.state.course,
-      grade: parseInt(this.state.grade),
-      id: this.props.currentStudent.id
+    const updatedJob = {
+      company: this.state.company,
+      status: this.state.status,
+      comments: this.state.comments,
+      userName: this.state.userName,
+      date: this.state.date,
+      id: this.state.jobID
     };
-    this.props.onUpdate(newEntry);
+    this.props.updateJob(updatedJob);
     this.handleCancel();
   }
 
