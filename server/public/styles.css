@@ -11,6 +11,7 @@
 
 .dashboard__table {
   overflow: scroll;
+  background-color: rgb(255, 255, 255, 0.4);
 }
 
 .table__header {
@@ -20,6 +21,7 @@
 }
 
 .table__input {
+  font-size: 1rem !important;
   height: 5rem !important;
 }
 
@@ -29,9 +31,11 @@
 }
 
 .btn-mini {
-  width: 4rem;
+  width: 4.25rem;
   height: 1.5rem;
   border-radius: 2rem;
+  font-size: 0.75rem;
+  box-shadow: 1px 1px #000000;
 }
 
 .btn:focus,
@@ -47,11 +51,15 @@
 }
 
 th {
-  font-size: 2vw !important;
+  font-size: 0.75rem !important;
+}
+
+td {
+  font-size: 0.75rem !important;
 }
 
 .icon {
-  font-size: 4vw !important;
+  font-size: 1.75rem !important;
 }
 
 .no__job {
