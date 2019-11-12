@@ -46,11 +46,12 @@ class JobForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const newEntry = {
-      name: this.state.name,
-      course: this.state.course,
-      grade: parseInt(this.state.grade)
+      userName: this.props.currentUser.userName,
+      company: this.state.company,
+      status: this.state.status,
+      comments: this.state.comments
     };
-    this.props.onSubmit(newEntry);
+    this.props.addJob(newEntry);
     this.handleCancel();
   }
 
@@ -93,7 +94,7 @@ class JobForm extends React.Component {
       <form onSubmit={ clickMethod } className = "w-100 d-flex flex-column justify-content-center">
         <div className="form-group d-flex align-items-center justify-content-around">
           <i className="icon text-white fas fa-building w-25 p-2 d-flex justify-content-center align-items-center"></i>
-          <input value={ company } name="company" onChange={ this.handleChange } type="text" className="form-control" placeholder="Company Name" required />
+          <input value={ company } name="company" onChange={ this.handleChange } type="text" className="form-control" placeholder="Company Name" autoComplete="off" required />
         </div>
         <div className="form-group d-flex align-items-center justify-content-around">
           <i className="icon text-white fas fa-folder w-25 p-2 d-flex justify-content-center align-items-center"></i>
@@ -109,7 +110,7 @@ class JobForm extends React.Component {
         </div>
         <div className="form-group d-flex align-items-center justify-content-around">
           <i className="icon text-white fas fa-comment w-25 p-2 d-flex justify-content-center align-items-center"></i>
-          <input value={ comments } name="comments" onChange={ this.handleChange } className="form-control" placeholder="Comments" min="0" max="100" required />
+          <input value={ comments } name="comments" onChange={ this.handleChange } className="form-control" placeholder="Comments" autoComplete="off" required />
         </div>
         <div className="d-flex align-items-center justify-content-around">
           <button type="submit" className={buttonClass}>{ buttonName }</button>

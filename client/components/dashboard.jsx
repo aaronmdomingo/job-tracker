@@ -10,6 +10,7 @@ class DashBoard extends React.Component {
     this.state = {
       jobArray: []
     };
+    this.addJob = this.addJob.bind(this);
   }
   componentDidMount() {
     this.getJobs();
@@ -20,6 +21,16 @@ class DashBoard extends React.Component {
       .then(result => {
         this.setState({ jobArray: result });
       });
+  }
+  addJob(jobObj) {
+    fetch(`/api/jobs.php`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(jobObj) })
+      .then(result => result.json())
+      .then(result => {
+        if (result.success) {
+          this.getJobs();
+        }
+      })
+      .catch(error => alert(error));
   }
   render() {
     const { jobArray } = this.state;
@@ -34,7 +45,7 @@ class DashBoard extends React.Component {
         <div className="dashboard__table h-50 w-100">
           <Jobtable jobArray={jobArray} />
         </div>
-        <JobForm/>
+        <JobForm currentUser={this.props.currentUser} addJob={this.addJob}/>
       </div>
     );
   }
