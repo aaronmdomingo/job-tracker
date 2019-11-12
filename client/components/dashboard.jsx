@@ -12,6 +12,7 @@ class DashBoard extends React.Component {
       jobArray: []
     };
     this.addJob = this.addJob.bind(this);
+    this.deleteJob = this.deleteJob.bind(this);
   }
   componentDidMount() {
     this.getJobs();
@@ -42,6 +43,16 @@ class DashBoard extends React.Component {
       })
       .catch(error => alert(error));
   }
+  deleteJob(jobObj) {
+    fetch(`/api/jobs.php`, { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(jobObj) })
+      .then(result => result.json())
+      .then(result => {
+        if (result.success) {
+          this.getJobs();
+        }
+      })
+      .catch(error => alert(error));
+  }
   render() {
     const { jobArray } = this.state;
     if (!this.props.isLoggedIn) {
@@ -53,7 +64,7 @@ class DashBoard extends React.Component {
         <Header logOutUser={this.props.logOutUser}/>
         <h3 className="w-75 d-flex justify-content-center align-items-center border-bottom border-dark">{this.props.currentUser.userName}</h3>
         <div className="dashboard__table h-50 w-100" id="message--container">
-          <Jobtable jobArray={jobArray} />
+          <Jobtable jobArray={jobArray} deleteJob={this.deleteJob}/>
         </div>
         <JobForm currentUser={this.props.currentUser} addJob={this.addJob}/>
       </div>

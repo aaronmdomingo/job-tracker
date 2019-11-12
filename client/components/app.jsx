@@ -7,10 +7,6 @@ import {
 import LandingPage from './landing-page';
 import DashBoard from './dashboard';
 
-// import Header from './header';
-// import GradeTable from './gradetable';
-// import GradeForm from './gradeform';
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -18,10 +14,6 @@ class App extends React.Component {
       isLoggedIn: false,
       currentUser: null
     };
-    // this.addStudent = this.addStudent.bind(this);
-    // this.deleteStudent = this.deleteStudent.bind(this);
-    // this.updateStudentID = this.updateStudentID.bind(this);
-    // this.submitEdit = this.submitEdit.bind(this);
     this.setCurrentUser = this.setCurrentUser.bind(this);
     this.logInUser = this.logInUser.bind(this);
     this.logOutUser = this.logOutUser.bind(this);
@@ -37,23 +29,7 @@ class App extends React.Component {
   logOutUser() {
     this.setState({ isLoggedIn: false });
   }
-  // getAllGrades() {
-  //   fetch('/api/grades')
-  //     .then(result => result.json())
-  //     .then(result => {
-  //       this.setState({ grades: result });
-  //     });
-  // }
-  // addStudent(newStudent) {
-  //   fetch('/api/grades', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(newStudent) })
-  //     .then(result => result.json())
-  //     .then(result => {
-  //       let newArray = [...this.state.grades];
-  //       newArray.push(result);
 
-  //       this.setState({ grades: newArray });
-  //     });
-  // }
   // deleteStudent(id) {
   //   fetch(`/api/grades/${id}`, { method: 'DELETE', headers: { 'Content-Type': 'application/json' } })
   //     .then(result => result.json())
