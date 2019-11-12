@@ -16,13 +16,16 @@ class Job extends React.Component {
     this.props.deleteJob(jobToBeDeleted);
   }
   handleUpdate() {
-    const student = {
-      name: this.props.name,
-      course: this.props.course,
-      grade: this.props.grade,
-      id: this.props.studentID
+    const job = {
+      id: this.props.id,
+      userName: this.props.userName,
+      company: this.props.company,
+      status: this.props.status,
+      comments: this.props.comments,
+      date: this.props.date
     };
-    this.props.onUpdate(student);
+    this.props.initiateUpdate(job);
+    this.setState({ inEdit: false });
   }
   render() {
     const { inEdit } = this.state;

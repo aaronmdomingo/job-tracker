@@ -9,10 +9,13 @@ class DashBoard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      jobArray: []
+      jobArray: [],
+      currentJob: null
     };
     this.addJob = this.addJob.bind(this);
     this.deleteJob = this.deleteJob.bind(this);
+    this.updateJob = this.updateJob.bind(this);
+    this.initiateUpdate = this.initiateUpdate.bind(this);
   }
   componentDidMount() {
     this.getJobs();
@@ -43,6 +46,16 @@ class DashBoard extends React.Component {
       })
       .catch(error => alert(error));
   }
+  updateJob(jobObj) {
+    fetch(`/api/jobs.php`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(jobObj) })
+      .then(result => result.json())
+      .then(result => {
+        if (result.success) {
+          this.getJobs();
+        }
+      })
+      .catch(error => alert(error));
+  }
   deleteJob(jobObj) {
     fetch(`/api/jobs.php`, { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(jobObj) })
       .then(result => result.json())
@@ -53,8 +66,11 @@ class DashBoard extends React.Component {
       })
       .catch(error => alert(error));
   }
+  initiateUpdate(jobObj) {
+    this.setState({ currentJob: jobObj });
+  }
   render() {
-    const { jobArray } = this.state;
+    const { jobArray, currentJob } = this.state;
     if (!this.props.isLoggedIn) {
       return <Redirect path='/'> </Redirect>;
     }
@@ -64,9 +80,9 @@ class DashBoard extends React.Component {
         <Header logOutUser={this.props.logOutUser}/>
         <h3 className="w-75 d-flex justify-content-center align-items-center border-bottom border-dark">{this.props.currentUser.userName}</h3>
         <div className="dashboard__table h-50 w-100" id="message--container">
-          <Jobtable jobArray={jobArray} deleteJob={this.deleteJob}/>
+          <Jobtable jobArray={jobArray} deleteJob={this.deleteJob} initiateUpdate={this.initiateUpdate}/>
         </div>
-        <JobForm currentUser={this.props.currentUser} addJob={this.addJob}/>
+        <JobForm currentUser={this.props.currentUser} addJob={this.addJob} updateJob={this.updateJob} currentJob={currentJob}/>
       </div>
     );
   }

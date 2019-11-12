@@ -8,6 +8,9 @@ class JobForm extends React.Component {
       company: '',
       status: '',
       comments: '',
+      userName: '',
+      date: '',
+      jobID: '',
       inEdit: false
     };
     this.handleChange = this.handleChange.bind(this);
@@ -17,11 +20,14 @@ class JobForm extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.currentStudent !== prevProps.currentStudent) {
+    if (this.props.currentJob !== prevProps.currentJob) {
       this.setState({
-        name: this.props.currentStudent.name,
-        course: this.props.currentStudent.course,
-        grade: this.props.currentStudent.grade,
+        company: this.props.currentJob.company,
+        status: this.props.currentJob.status,
+        comments: this.props.currentJob.comments,
+        userName: this.props.currentJob.userName,
+        date: this.props.currentJob.date,
+        jobID: this.props.currentJob.id,
         inEdit: true
       });
     }
@@ -57,13 +63,15 @@ class JobForm extends React.Component {
 
   submitUpdate(event) {
     event.preventDefault();
-    const newEntry = {
-      name: this.state.name,
-      course: this.state.course,
-      grade: parseInt(this.state.grade),
-      id: this.props.currentStudent.id
+    const updatedJob = {
+      company: this.state.company,
+      status: this.state.status,
+      comments: this.state.comments,
+      userName: this.state.userName,
+      date: this.state.date,
+      id: this.state.jobID
     };
-    this.props.onUpdate(newEntry);
+    this.props.updateJob(updatedJob);
     this.handleCancel();
   }
 
@@ -87,14 +95,14 @@ class JobForm extends React.Component {
     } else {
       buttonName = 'Update';
       clickMethod = this.submitUpdate;
-      buttonClass = 'btn btn-success';
+      buttonClass = 'btn btn-primary';
     }
 
     return (
       <form onSubmit={ clickMethod } className = "w-100 d-flex flex-column justify-content-center">
         <div className="form-group d-flex align-items-center justify-content-around">
           <i className="icon text-white fas fa-building w-25 p-2 d-flex justify-content-center align-items-center"></i>
-          <input value={ company } name="company" onChange={ this.handleChange } type="text" className="form-control" placeholder="Company Name" autoComplete="off" required />
+          <input value={ company } name="company" onChange={ this.handleChange } type="text" className="form-control" placeholder="Company Name" autoComplete="off" maxLength="20" required />
         </div>
         <div className="form-group d-flex align-items-center justify-content-around">
           <i className="icon text-white fas fa-folder w-25 p-2 d-flex justify-content-center align-items-center"></i>
@@ -110,7 +118,7 @@ class JobForm extends React.Component {
         </div>
         <div className="form-group d-flex align-items-center justify-content-around">
           <i className="icon text-white fas fa-comment w-25 p-2 d-flex justify-content-center align-items-center"></i>
-          <input value={ comments } name="comments" onChange={ this.handleChange } className="form-control" placeholder="Comments" autoComplete="off" required />
+          <input value={ comments } name="comments" onChange={ this.handleChange } className="form-control" placeholder="Comments" autoComplete="off" maxLength="100" required />
         </div>
         <div className="d-flex align-items-center justify-content-around">
           <button type="submit" className={buttonClass}>{ buttonName }</button>
