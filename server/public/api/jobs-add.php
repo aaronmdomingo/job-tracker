@@ -3,18 +3,20 @@
     $bodyData = getBodyData();
     $user_name = $bodyData["userName"];
     $company = $bodyData["company"];
+    $position = $bodyData["position"];
     $status = $bodyData["status"];
     $comments = $bodyData["comments"];
     $date = date("Y-m-d");
 
     $filter_user_name = str_replace("'","\'", $user_name);
     $filter_company = str_replace("'","\'", $company);
+    $filter_position = str_replace("'","\'", $position);
     $filter_status = str_replace("'","\'", $status);
     $filter_comments = str_replace("'","\'", $comments);
 
     $getQuery = "SELECT * FROM `user` WHERE `user`.`user_name` = '$filter_user_name' ";
-    $postQuery = "INSERT INTO `jobs` (`user_name`, `company`, `status`, `comments`, `date`)
-                    VALUES ('$filter_user_name', '$filter_company', '$filter_status', '$filter_comments', '$date')";
+    $postQuery = "INSERT INTO `jobs` (`user_name`, `company`, `position`, `status`, `comments`, `date`)
+                    VALUES ('$filter_user_name', '$filter_company', '$filter_position', '$filter_status', '$filter_comments', '$date')";
 
     $getResult = mysqli_query($conn, $getQuery);
 
