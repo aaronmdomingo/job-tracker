@@ -32,8 +32,6 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div className="container-fluid">
-        </div>
         <Switch>
           <Route exact path='/'>
             <LandingPage setCurrentUser={this.setCurrentUser} logInUser={this.logInUser} isLoggedIn={this.state.isLoggedIn} logOutUser={this.logOutUser} currentUser={this.state.currentUser}/>
