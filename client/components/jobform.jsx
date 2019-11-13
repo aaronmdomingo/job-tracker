@@ -6,6 +6,7 @@ class JobForm extends React.Component {
     super(props);
     this.state = {
       company: '',
+      position: '',
       status: '',
       comments: '',
       userName: '',
@@ -23,6 +24,7 @@ class JobForm extends React.Component {
     if (this.props.currentJob !== prevProps.currentJob) {
       this.setState({
         company: this.props.currentJob.company,
+        position: this.props.currentJob.position,
         status: this.props.currentJob.status,
         comments: this.props.currentJob.comments,
         userName: this.props.currentJob.userName,
@@ -40,6 +42,9 @@ class JobForm extends React.Component {
       case 'company':
         this.setState({ company: event.target.value });
         break;
+      case 'position':
+        this.setState({ position: event.target.value });
+        break;
       case 'status':
         this.setState({ status: event.target.value });
         break;
@@ -54,6 +59,7 @@ class JobForm extends React.Component {
     const newEntry = {
       userName: this.props.currentUser.userName,
       company: this.state.company,
+      position: this.state.position,
       status: this.state.status,
       comments: this.state.comments
     };
@@ -65,6 +71,7 @@ class JobForm extends React.Component {
     event.preventDefault();
     const updatedJob = {
       company: this.state.company,
+      position: this.state.position,
       status: this.state.status,
       comments: this.state.comments,
       userName: this.state.userName,
@@ -78,6 +85,7 @@ class JobForm extends React.Component {
   handleCancel() {
     this.setState({
       company: '',
+      position: '',
       status: '',
       comments: '',
       inEdit: false
@@ -85,7 +93,7 @@ class JobForm extends React.Component {
   }
 
   render() {
-    let { company, status, comments, inEdit } = this.state;
+    let { company, position, status, comments, inEdit } = this.state;
     let buttonName, clickMethod, buttonClass;
 
     if (!inEdit) {
@@ -99,10 +107,14 @@ class JobForm extends React.Component {
     }
 
     return (
-      <form onSubmit={ clickMethod } className = "w-100 d-flex flex-column justify-content-center">
+      <form onSubmit={ clickMethod } className = "w-100 d-flex flex-column justify-content-around">
         <div className="form-group d-flex align-items-center justify-content-around">
           <i className="icon text-white fas fa-building w-25 p-2 d-flex justify-content-center align-items-center"></i>
           <input value={ company } name="company" onChange={ this.handleChange } type="text" className="form-control" placeholder="Company Name" autoComplete="off" maxLength="20" required />
+        </div>
+        <div className="form-group d-flex align-items-center justify-content-around">
+          <i className="icon text-white fas fa-user w-25 p-2 d-flex justify-content-center align-items-center"></i>
+          <input value={position} name="position" onChange={this.handleChange} type="text" className="form-control" placeholder="Position" autoComplete="off" maxLength="20" required />
         </div>
         <div className="form-group d-flex align-items-center justify-content-around">
           <i className="icon text-white fas fa-folder w-25 p-2 d-flex justify-content-center align-items-center"></i>
