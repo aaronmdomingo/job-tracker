@@ -10,9 +10,6 @@ class DeleteModal extends React.Component {
   componentWillMount() {
     this.setState({ visible: true });
   }
-  componentWillUnmount() {
-    this.setState({ visible: false });
-  }
   handleDelete() {
     this.props.deleteJob({ id: this.props.jobId.id });
     this.props.hideDeleteModal();
@@ -26,8 +23,6 @@ class DeleteModal extends React.Component {
 
     if (visible) {
       modalClass = 'fadeIn';
-    } else {
-      modalClass = 'fadeOut';
     }
 
     return (
