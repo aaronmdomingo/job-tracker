@@ -37,15 +37,16 @@ class Job extends React.Component {
     const { inEdit } = this.state;
     const date = this.props.date.split('-');
     const filteredDate = `${date[1]}/${date[2]}/${date[0]}`;
+    const toggleEdit = () => this.setState({ inEdit: !inEdit });
 
     let button = inEdit
-      ? <th scope="col" className="h-100 d-flex flex-column justify-content-around align-items-center">
+      ? <td className="table__buttons d-flex flex-column justify-content-around align-items-center" onClick={toggleEdit}>
         <button onClick={this.handleUpdate} className="btn__update btn-mini btn-primary">Update</button>
         <button onClick={this.handleDelete} className="btn-mini btn-danger">Delete</button>
-      </th>
-      : <th scope="col" className="h-100 d-flex flex-column justify-content-around align-items-center">
+      </td>
+      : <td className="table__buttons d-flex flex-column justify-content-around align-items-center">
         <button onClick={this.handleEdit} className="btn-mini btn-light">Edit</button>
-      </th>;
+      </td>;
 
     return (
       <tr className="table__input">

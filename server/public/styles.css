@@ -122,6 +122,10 @@ td {
   display: none;
 }
 
+.table__buttons {
+  min-height: 8rem;
+}
+
 @keyframes animationFadeIn {
   0% {
     opacity: 0;
