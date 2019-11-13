@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { animateScroll } from 'react-scroll';
 import Header from './header';
 import Jobtable from './jobtable';
@@ -13,7 +13,8 @@ class DashBoard extends React.Component {
       jobArray: [],
       currentJob: null,
       jobId: null,
-      showDeleteModal: false
+      showDeleteModal: false,
+      isEmpty: false
     };
     this.addJob = this.addJob.bind(this);
     this.deleteJob = this.deleteJob.bind(this);
@@ -36,7 +37,11 @@ class DashBoard extends React.Component {
     fetch(`/api/jobs.php?userName=${this.props.currentUser.userName}`)
       .then(result => result.json())
       .then(result => {
-        this.setState({ jobArray: result });
+        if (!result.length) {
+          this.setState({ isEmpty: true });
+        } else {
+          this.setState({ jobArray: result });
+        }
       });
   }
   scrollToBottom() {
@@ -85,23 +90,21 @@ class DashBoard extends React.Component {
     this.setState({ showDeleteModal: false });
   }
   render() {
-    let modalElement;
-    const { jobArray, currentJob, showDeleteModal, jobId } = this.state;
+    const { jobArray, currentJob, showDeleteModal, jobId, isEmpty } = this.state;
 
-    if (!this.props.isLoggedIn) {
-      return <Redirect path='/'> </Redirect>;
-    }
-
-    if (showDeleteModal) {
-      modalElement = <DeleteModal jobId={jobId} hideDeleteModal={this.hideDeleteModal} deleteJob={this.deleteJob}/>;
-    }
+    let modalElement = showDeleteModal ? <DeleteModal jobId={jobId} hideDeleteModal={this.hideDeleteModal} deleteJob={this.deleteJob} /> : '';
+    let tableElement = isEmpty
+      ? <div className="no__job rounded w-100 h-100 d-flex align-items-center justify-content-center">
+        <h3> Currently no jobs listed </h3>
+      </div>
+      : <Jobtable jobArray={jobArray} initiateUpdate={this.initiateUpdate} showDeleteModal={this.showDeleteModal} setJobId={this.setJobId} />;
 
     return (
       <div className="dashboard__page container-fluid h-100 d-flex flex-column justify-content-around align-items-center">
         <Header logOutUser={this.props.logOutUser}/>
         <h3 className="dashboard__user w-75 d-flex justify-content-center align-items-center border-bottom border-dark">{this.props.currentUser.userName}</h3>
-        <div className="dashboard__table h-50 w-100 rounded" id="message--container">
-          <Jobtable jobArray={jobArray} initiateUpdate={this.initiateUpdate} showDeleteModal={this.showDeleteModal} setJobId={this.setJobId}/>
+        <div className="dashboard__table w-100 rounded" id="message--container">
+          { tableElement }
         </div>
         <JobForm currentUser={this.props.currentUser} addJob={this.addJob} updateJob={this.updateJob} currentJob={currentJob}/>
         { modalElement }
