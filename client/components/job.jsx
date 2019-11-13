@@ -48,7 +48,7 @@ class Job extends React.Component {
     return (
       <tr className="table__input">
         <th className="table__result text-center align-middle"> { this.props.company } </th>
-        <td className="table__result text-center align-middle position"> { this.props.status } </td>
+        <td className="table__result text-center align-middle position"> { this.props.position } </td>
         <td className="table__result text-center align-middle"> {this.props.status} </td>
         <td className="table__result align-middle"> { this.props.comments } </td>
         <td className="table__result text-center align-middle date"> {filteredDate} </td>
