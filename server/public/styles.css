@@ -16,6 +16,7 @@
 
 .table__header {
   height: 2rem !important;
+  width: 25% !important;
   position: sticky !important;
   top: 0;
 }
@@ -23,6 +24,10 @@
 .table__input {
   font-size: 1rem !important;
   height: 8rem !important;
+}
+
+.table__result {
+  width: 25% !important;
 }
 
 .btn {
@@ -84,11 +89,37 @@ form {
   display: block;
 }
 
+.position,
+.date {
+  display: none;
+}
+
 @keyframes animationFadeIn {
   0% {
     opacity: 0;
   }
   100% {
     opacity: 1;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .position,
+  .date {
+    display: table-cell;
+  }
+
+  .table__header,
+  .table__result {
+    width: 16.5% !important;
+  }
+
+  html {
+    font-size: 1.25rem;
+  }
+
+  .dashboard__user {
+    width: 50% !important;
   }
 }
