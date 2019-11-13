@@ -42,6 +42,7 @@ class DashBoard extends React.Component {
         if (!result.length) {
           this.setState({ isEmpty: true });
         } else {
+          this.setState({ isEmpty: false });
           this.setState({ jobArray: result });
         }
       });
@@ -96,7 +97,7 @@ class DashBoard extends React.Component {
 
     let modalElement = showDeleteModal ? <DeleteModal jobId={jobId} hideDeleteModal={this.hideDeleteModal} deleteJob={this.deleteJob} /> : '';
     let tableElement = isEmpty
-      ? <div className="no__job rounded w-100 h-100 d-flex align-items-center justify-content-center">
+      ? <div className="no__job rounded w-100 h-100 d-flex align-items-center justify-content-center fadeIn">
         <h3> Currently no jobs listed </h3>
       </div>
       : <Jobtable jobArray={jobArray} initiateUpdate={this.initiateUpdate} showDeleteModal={this.showDeleteModal} setJobId={this.setJobId} />;

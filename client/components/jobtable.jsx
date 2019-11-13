@@ -7,7 +7,7 @@ class JobTable extends React.Component {
     const jobs = this.props.jobArray;
 
     return (
-      <table className="table table-striped table-borderless table-hover h-100 w-100">
+      <table className="table table-striped table-borderless table-hover h-100 w-100 fadeIn">
         <thead className="thead-dark">
           <tr>
             <th className="text-center table__header"> Company </th>
