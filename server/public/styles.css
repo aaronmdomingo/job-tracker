@@ -122,6 +122,10 @@ td {
   display: none;
 }
 
+.table__buttons {
+  min-height: 8rem;
+}
+
 @keyframes animationFadeIn {
   0% {
     opacity: 0;
@@ -157,6 +161,19 @@ td {
 
   .dashboard__user {
     width: 50% !important;
+  }
+
+  .login__container {
+    width: 50% !important;
+  }
+
+  .login__input {
+    width: 60%;
+  }
+
+  .login__input:focus {
+    outline: none;
+    width: 80%;
   }
 
   .form-group {
@@ -217,7 +234,7 @@ and (orientation: landscape) {
     font-size: 80%
   }
 
-  form {
+  .job__form {
     visibility: hidden !important;
     position: absolute;
     top: 0;

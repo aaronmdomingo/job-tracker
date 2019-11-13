@@ -40,7 +40,7 @@ class DeleteModal extends React.Component {
             </div>
             <div className="modal-footer w-100 d-flex justify-content-around align-items-center">
               <button type="button" className="btn-mini btn-light" data-dismiss="modal" onClick={this.handleDelete}>Yes</button>
-              <button type="button" className="btn-mini btn-danger" onClick={this.handleClose}>Cancel</button>
+              <button type="button" className="btn-mini btn-secondary" onClick={this.handleClose}>Cancel</button>
             </div>
           </div>
         </div>
