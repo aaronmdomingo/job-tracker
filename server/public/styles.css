@@ -75,13 +75,13 @@ form {
   width: 65% !important;
 }
 
+.modal {
+  background-color: rgb(0, 0, 0, 0.4);
+}
+
 .fadeIn {
   animation: 0.3s animationFadeIn ease-out !important;
   display: block;
-}
-
-.fadeout {
-  animation: 0.3s animationFadeOut ease-out !important;
 }
 
 @keyframes animationFadeIn {
@@ -90,14 +90,5 @@ form {
   }
   100% {
     opacity: 1;
-  }
-}
-
-@keyframes animationFadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
   }
 }
