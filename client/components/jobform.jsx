@@ -107,7 +107,7 @@ class JobForm extends React.Component {
     }
 
     return (
-      <form onSubmit={ clickMethod } className = "w-100 d-flex flex-column justify-content-around">
+      <form onSubmit={ clickMethod } className = "w-100 d-flex flex-column justify-content-start">
         <div className="form-group d-flex align-items-center justify-content-around">
           <i className="icon text-white fas fa-building w-25 p-2 d-flex justify-content-center align-items-center"></i>
           <input value={ company } name="company" onChange={ this.handleChange } type="text" className="form-control" placeholder="Company Name" autoComplete="off" maxLength="20" required />

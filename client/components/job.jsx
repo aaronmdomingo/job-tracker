@@ -38,7 +38,7 @@ class Job extends React.Component {
 
     let button = inEdit
       ? <th scope="col" className="h-100 d-flex flex-column justify-content-around align-items-center">
-        <button onClick={this.handleUpdate} className="btn-mini btn-primary">Update</button>
+        <button onClick={this.handleUpdate} className="btn__update btn-mini btn-primary">Update</button>
         <button onClick={this.handleDelete} className="btn-mini btn-danger">Delete</button>
       </th>
       : <th scope="col" className="h-100 d-flex flex-column justify-content-around align-items-center">
