@@ -6,6 +6,7 @@ class LandingPage extends React.Component {
     super(props);
     this.logInAsGuest = this.logInAsGuest.bind(this);
     this.goToDashboard = this.goToDashboard.bind(this);
+    this.goToLogIn = this.goToLogIn.bind(this);
   }
   logInAsGuest() {
     const guestObject = {
@@ -18,6 +19,9 @@ class LandingPage extends React.Component {
   goToDashboard() {
     this.props.history.push(`/dashboard/${this.props.currentUser.userName}`);
   }
+  goToLogIn() {
+    this.props.history.push('/login');
+  }
   render() {
     let topButton, bottomButton;
     const logOutUser = () => this.props.logOutUser();
@@ -26,7 +30,7 @@ class LandingPage extends React.Component {
       topButton = <button className="btn btn-light m-2" onClick={this.goToDashboard}>Dashboard</button>;
       bottomButton = <button className="btn btn-light m-2" onClick={logOutUser}>Log out</button>;
     } else {
-      topButton = <button className="btn btn-light m-2">Log in</button>;
+      topButton = <button className="btn btn-light m-2" onClick={this.goToLogIn}>Log in</button>;
       bottomButton = <button className="btn btn-light m-2" onClick={this.logInAsGuest}>Guest</button>;
     }
     return (

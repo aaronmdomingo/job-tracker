@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import LandingPage from './landing-page';
 import DashBoard from './dashboard';
+import LogIn from './login';
 
 class App extends React.Component {
   constructor(props) {
@@ -38,6 +39,9 @@ class App extends React.Component {
           </Route>
           <Route path='/dashboard/:user'>
             <DashBoard isLoggedIn={this.state.isLoggedIn} currentUser={this.state.currentUser} logOutUser={this.logOutUser}/>
+          </Route>
+          <Route path='/login'>
+            <LogIn logInUser={this.logInUser} />;
           </Route>
           <Route>
             <LandingPage setCurrentUser={this.setCurrentUser} logInUser={this.logInUser} isLoggedIn={this.state.isLoggedIn} logOutUser={this.logOutUser} currentUser={this.state.currentUser} />;
