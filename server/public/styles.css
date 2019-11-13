@@ -83,12 +83,13 @@ form {
 
 .form-group {
   height: 3rem !important;
-  margin-bottom: 0 !important;
+  margin-bottom: 0.5rem !important;
 }
 
 .form-control {
   width: 65% !important;
   height: 2rem;
+  font-size: 0.75rem !important;
 }
 
 .modal {
@@ -114,8 +115,7 @@ form {
   }
 }
 
-
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .position,
   .date {
     display: table-cell;
@@ -127,10 +127,86 @@ form {
   }
 
   html {
-    font-size: 1.25rem;
+    font-size: 125%;
   }
 
   .dashboard__user {
     width: 50% !important;
+  }
+
+  .form-group {
+    justify-content: center !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .icon {
+    width: 15% !important;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .dashboard__table {
+    width: 80% !important;
+  }
+
+  .dashboard__user {
+    width: 40% !important;
+  }
+
+  .dashboard__header {
+    width: 80% !important;
+  }
+
+  .form-control {
+    width: 50% !important;
+  }
+
+  .icon {
+    width: 10% !important;
+  }
+}
+
+@media screen
+and (max-width: 576px)
+and (max-height: 736px) {
+  html {
+    font-size: 80%;
+  }
+}
+
+@media only screen
+and (max-width: 1024px)
+and (max-height: 768px)
+and (orientation: landscape) {
+  html {
+    font-size: 100%
+  }
+}
+
+
+@media only screen
+and (max-width: 823px)
+and (max-height: 414px)
+and (orientation: landscape) {
+  html {
+    font-size: 80%
+  }
+
+  form {
+    visibility: hidden !important;
+    position: absolute;
+    top: 0;
+  }
+
+  .dashboard__user {
+    width: 40% !important;
+  }
+
+  .dashboard__table {
+    height: 67.5% !important;
+  }
+
+  .btn__update {
+    display: none;
   }
 }
