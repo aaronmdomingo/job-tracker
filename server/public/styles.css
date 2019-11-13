@@ -39,7 +39,8 @@
 }
 
 .btn:focus,
-.btn-mini:focus {
+.btn-mini:focus,
+.close:focus {
   outline: none !important;
   box-shadow: none !important;
 }
@@ -72,4 +73,22 @@ form {
 
 .form-control {
   width: 65% !important;
+}
+
+.modal {
+  background-color: rgb(0, 0, 0, 0.4);
+}
+
+.fadeIn {
+  animation: 0.3s animationFadeIn ease-out !important;
+  display: block;
+}
+
+@keyframes animationFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
