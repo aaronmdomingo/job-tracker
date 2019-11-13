@@ -3,7 +3,8 @@
 }
 
 .landing__page,
-.dashboard__page {
+.dashboard__page,
+.login__page {
   background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(11).jpg");
   background-position: center;
   background-size: cover;
@@ -73,11 +74,30 @@ td {
   font-size: 1.75rem !important;
 }
 
-.no__job {
+.no__job,
+.login__container {
   background-color: rgb(255, 255, 255, 0.6);
 }
 
-form {
+.login__container {
+  transition: all 0.2s;
+  animation: 0.4s animationGrow linear;
+}
+
+.login__input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #000000;
+  width: 80%;
+  transition: all 0.2s;
+}
+
+.login__input:focus {
+  outline: none;
+  width: 100%;
+}
+
+.job__form {
   height: 35% !important;
 }
 
@@ -112,6 +132,15 @@ form {
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes animationGrow {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
   }
 }
 
