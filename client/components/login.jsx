@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 
 class LogIn extends React.Component {
   constructor(props) {
@@ -55,23 +55,29 @@ class LogIn extends React.Component {
   render() {
     const { userName, passWord, fetchResponse } = this.state;
 
-    return (
-      <form onSubmit={this.handleSubmit} className="login__page container-fluid h-100 w-100 p3 d-flex flex-column align-items-center justify-content-center">
-        <h1 className="display-2 m-3"> Tracker </h1>
-        <div className="login__container container-fluid w-75 h-50 d-flex flex-column align-items-center justify-content-center rounded fadeIn">
-          <div className="container-fluid h-25 w-100 d-flex justify-content-center align-items-center">
-            <input type="text" value={userName} name="username" onChange={this.handleChange} placeholder="Username" className="login__input text-center" autoComplete="off" required/>
+    if (this.props.isLoggedIn) {
+      return (
+        <Redirect to='/' />
+      );
+    } else {
+      return (
+        <form onSubmit={this.handleSubmit} className="login__page container-fluid h-100 w-100 p3 d-flex flex-column align-items-center justify-content-center">
+          <h1 className="display-2 m-3"> Tracker </h1>
+          <div className="login__container container-fluid w-75 h-50 d-flex flex-column align-items-center justify-content-center rounded fadeIn">
+            <div className="container-fluid h-25 w-100 d-flex justify-content-center align-items-center">
+              <input type="text" value={userName} name="username" onChange={this.handleChange} placeholder="Username" className="login__input text-center" autoComplete="off" required />
+            </div>
+            <div className="container-fluid h-25 w-100 d-flex justify-content-center align-items-center">
+              <input type="password" value={passWord} name="password" onChange={this.handleChange} placeholder="Password" className="login__input text-center" required />
+            </div>
+            <div className="container-fluid h-25 w-100 d-flex justify-content-center align-items-center">
+              <p className="text-danger "> {fetchResponse} </p>
+            </div>
           </div>
-          <div className="container-fluid h-25 w-100 d-flex justify-content-center align-items-center">
-            <input type="password" value={passWord} name="password" onChange={this.handleChange} placeholder="Password" className="login__input text-center" required/>
-          </div>
-          <div className="container-fluid h-25 w-100 d-flex justify-content-center align-items-center">
-            <p className="text-danger "> { fetchResponse } </p>
-          </div>
-        </div>
-        <button type="submit" className="btn btn-light m-3"> Submit</button>
-      </form>
-    );
+          <button type="submit" className="btn btn-light m-3"> Submit</button>
+        </form>
+      );
+    }
   }
 }
 
