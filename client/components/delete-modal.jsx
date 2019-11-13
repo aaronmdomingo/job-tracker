@@ -14,7 +14,7 @@ class DeleteModal extends React.Component {
     this.setState({ visible: false });
   }
   handleDelete() {
-    this.props.deleteJob({ id: this.props.jobId });
+    this.props.deleteJob({ id: this.props.jobId.id });
     this.props.hideDeleteModal();
   }
   handleClose() {
@@ -35,11 +35,12 @@ class DeleteModal extends React.Component {
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content">
             <div className="modal-header">
+              <h5 className="modal-title">{this.props.jobId.company}</h5>
               <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={this.handleClose}>
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div className="modal-body">
+            <div className="modal-body text-center">
               You are about to delete this job, are you sure?
             </div>
             <div className="modal-footer w-100 d-flex justify-content-around align-items-center">
