@@ -159,6 +159,19 @@ td {
     width: 50% !important;
   }
 
+  .login__container {
+    width: 50% !important;
+  }
+
+  .login__input {
+    width: 60%;
+  }
+
+  .login__input:focus {
+    outline: none;
+    width: 80%;
+  }
+
   .form-group {
     justify-content: center !important;
     margin-bottom: 0.25rem !important;
@@ -217,7 +230,7 @@ and (orientation: landscape) {
     font-size: 80%
   }
 
-  form {
+  .job__form {
     visibility: hidden !important;
     position: absolute;
     top: 0;
