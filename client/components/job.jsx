@@ -15,7 +15,8 @@ class Job extends React.Component {
     this.props.showDeleteModal();
     this.props.setJobId({
       id: this.props.id,
-      company: this.props.company
+      company: this.props.company,
+      position: this.props.position
     });
     this.setState({ inEdit: false });
   }
