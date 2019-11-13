@@ -24,6 +24,7 @@ class Job extends React.Component {
       id: this.props.id,
       userName: this.props.userName,
       company: this.props.company,
+      position: this.props.position,
       status: this.props.status,
       comments: this.props.comments,
       date: this.props.date
