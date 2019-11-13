@@ -4,18 +4,24 @@ import { animateScroll } from 'react-scroll';
 import Header from './header';
 import Jobtable from './jobtable';
 import JobForm from './jobform';
+import DeleteModal from './delete-modal';
 
 class DashBoard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       jobArray: [],
-      currentJob: null
+      currentJob: null,
+      jobId: null,
+      showDeleteModal: false
     };
     this.addJob = this.addJob.bind(this);
     this.deleteJob = this.deleteJob.bind(this);
     this.updateJob = this.updateJob.bind(this);
     this.initiateUpdate = this.initiateUpdate.bind(this);
+    this.setJobId = this.setJobId.bind(this);
+    this.showDeleteModal = this.showDeleteModal.bind(this);
+    this.hideDeleteModal = this.hideDeleteModal.bind(this);
   }
   componentDidMount() {
     this.getJobs();
@@ -69,10 +75,25 @@ class DashBoard extends React.Component {
   initiateUpdate(jobObj) {
     this.setState({ currentJob: jobObj });
   }
+  setJobId(id) {
+    this.setState({ jobId: id });
+  }
+  showDeleteModal() {
+    this.setState({ showDeleteModal: true });
+  }
+  hideDeleteModal() {
+    this.setState({ showDeleteModal: false });
+  }
   render() {
-    const { jobArray, currentJob } = this.state;
+    let modalElement;
+    const { jobArray, currentJob, showDeleteModal, jobId } = this.state;
+
     if (!this.props.isLoggedIn) {
       return <Redirect path='/'> </Redirect>;
+    }
+
+    if (showDeleteModal) {
+      modalElement = <DeleteModal jobId={jobId} hideDeleteModal={this.hideDeleteModal} deleteJob={this.deleteJob}/>;
     }
 
     return (
@@ -80,9 +101,10 @@ class DashBoard extends React.Component {
         <Header logOutUser={this.props.logOutUser}/>
         <h3 className="w-75 d-flex justify-content-center align-items-center border-bottom border-dark">{this.props.currentUser.userName}</h3>
         <div className="dashboard__table h-50 w-100" id="message--container">
-          <Jobtable jobArray={jobArray} deleteJob={this.deleteJob} initiateUpdate={this.initiateUpdate}/>
+          <Jobtable jobArray={jobArray} initiateUpdate={this.initiateUpdate} showDeleteModal={this.showDeleteModal} setJobId={this.setJobId}/>
         </div>
         <JobForm currentUser={this.props.currentUser} addJob={this.addJob} updateJob={this.updateJob} currentJob={currentJob}/>
+        { modalElement }
       </div>
     );
   }

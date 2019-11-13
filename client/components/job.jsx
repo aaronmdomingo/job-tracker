@@ -12,8 +12,9 @@ class Job extends React.Component {
     this.setState({ inEdit: true });
   }
   handleDelete() {
-    const jobToBeDeleted = { id: this.props.id };
-    this.props.deleteJob(jobToBeDeleted);
+    this.props.showDeleteModal();
+    this.props.setJobId(this.props.id);
+    this.setState({ inEdit: false });
   }
   handleUpdate() {
     const job = {
