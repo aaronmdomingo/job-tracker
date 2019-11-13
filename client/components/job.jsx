@@ -33,6 +33,8 @@ class Job extends React.Component {
   }
   render() {
     const { inEdit } = this.state;
+    const date = this.props.date.split('-');
+    const filteredDate = `${date[1]}/${date[2]}/${date[0]}`;
 
     let button = inEdit
       ? <th scope="col" className="h-100 d-flex flex-column justify-content-around align-items-center">
@@ -45,9 +47,11 @@ class Job extends React.Component {
 
     return (
       <tr className="table__input">
-        <th className="w-25 text-center align-middle"> { this.props.company } </th>
-        <td className="w-25 text-center align-middle"> { this.props.status } </td>
-        <td className="w-25"> { this.props.comments } </td>
+        <th className="table__result text-center align-middle"> { this.props.company } </th>
+        <td className="table__result text-center align-middle position"> { this.props.status } </td>
+        <td className="table__result text-center align-middle"> {this.props.status} </td>
+        <td className="table__result align-middle"> { this.props.comments } </td>
+        <td className="table__result text-center align-middle date"> {filteredDate} </td>
         { button }
       </tr>
     );

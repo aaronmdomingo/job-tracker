@@ -16,10 +16,12 @@ class JobTable extends React.Component {
       <table className = "table table-striped table-borderless table-hover h-100 w-100">
         <thead className = "thead-dark">
           <tr>
-            <th scope="w-25" className="text-center table__header"> Company </th>
-            <th scope="w-25" className="text-center table__header"> Status </th>
-            <th scope="w-25" className="text-center table__header"> Comments </th>
-            <th scope="w-25" className="text-center table__header"> Actions </th>
+            <th className="text-center table__header"> Company </th>
+            <th className="text-center table__header position"> Position </th>
+            <th className="text-center table__header"> Status </th>
+            <th className="text-center table__header"> Comments </th>
+            <th className="text-center table__header date"> Date </th>
+            <th className="text-center table__header"> Actions </th>
           </tr>
         </thead>
         <tbody>

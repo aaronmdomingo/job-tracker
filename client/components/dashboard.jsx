@@ -99,8 +99,8 @@ class DashBoard extends React.Component {
     return (
       <div className="dashboard__page container-fluid h-100 d-flex flex-column justify-content-around align-items-center">
         <Header logOutUser={this.props.logOutUser}/>
-        <h3 className="w-75 d-flex justify-content-center align-items-center border-bottom border-dark">{this.props.currentUser.userName}</h3>
-        <div className="dashboard__table h-50 w-100" id="message--container">
+        <h3 className="dashboard__user w-75 d-flex justify-content-center align-items-center border-bottom border-dark">{this.props.currentUser.userName}</h3>
+        <div className="dashboard__table h-50 w-100 rounded" id="message--container">
           <Jobtable jobArray={jobArray} initiateUpdate={this.initiateUpdate} showDeleteModal={this.showDeleteModal} setJobId={this.setJobId}/>
         </div>
         <JobForm currentUser={this.props.currentUser} addJob={this.addJob} updateJob={this.updateJob} currentJob={currentJob}/>
