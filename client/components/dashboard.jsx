@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 import { animateScroll } from 'react-scroll';
 import Header from './header';
 import Jobtable from './jobtable';
@@ -25,8 +25,10 @@ class DashBoard extends React.Component {
     this.hideDeleteModal = this.hideDeleteModal.bind(this);
   }
   componentDidMount() {
-    this.getJobs();
-    this.scrollToBottom();
+    if (this.props.isLoggedIn) {
+      this.getJobs();
+      this.scrollToBottom();
+    }
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.jobArray.length < this.state.jobArray.length) {
@@ -40,6 +42,7 @@ class DashBoard extends React.Component {
         if (!result.length) {
           this.setState({ isEmpty: true });
         } else {
+          this.setState({ isEmpty: false });
           this.setState({ jobArray: result });
         }
       });
@@ -94,22 +97,28 @@ class DashBoard extends React.Component {
 
     let modalElement = showDeleteModal ? <DeleteModal jobId={jobId} hideDeleteModal={this.hideDeleteModal} deleteJob={this.deleteJob} /> : '';
     let tableElement = isEmpty
-      ? <div className="no__job rounded w-100 h-100 d-flex align-items-center justify-content-center">
+      ? <div className="no__job rounded w-100 h-100 d-flex align-items-center justify-content-center fadeIn">
         <h3> Currently no jobs listed </h3>
       </div>
       : <Jobtable jobArray={jobArray} initiateUpdate={this.initiateUpdate} showDeleteModal={this.showDeleteModal} setJobId={this.setJobId} />;
 
-    return (
-      <div className="dashboard__page container-fluid h-100 d-flex flex-column justify-content-around align-items-center">
-        <Header logOutUser={this.props.logOutUser}/>
-        <h3 className="dashboard__user w-75 d-flex justify-content-center align-items-center border-bottom border-dark">{this.props.currentUser.userName}</h3>
-        <div className="dashboard__table w-100 rounded" id="message--container">
-          { tableElement }
+    if (this.props.isLoggedIn) {
+      return (
+        <div className="dashboard__page container-fluid h-100 d-flex flex-column justify-content-around align-items-center">
+          <Header logOutUser={this.props.logOutUser} />
+          <h3 className="dashboard__user w-75 d-flex justify-content-center align-items-center border-bottom border-dark">{this.props.currentUser.userName}</h3>
+          <div className="dashboard__table w-100 rounded" id="message--container">
+            {tableElement}
+          </div>
+          <JobForm currentUser={this.props.currentUser} addJob={this.addJob} updateJob={this.updateJob} currentJob={currentJob} />
+          {modalElement}
         </div>
-        <JobForm currentUser={this.props.currentUser} addJob={this.addJob} updateJob={this.updateJob} currentJob={currentJob}/>
-        { modalElement }
-      </div>
-    );
+      );
+    } else {
+      return (
+        <Redirect to='/' />
+      );
+    }
   }
 }
 
