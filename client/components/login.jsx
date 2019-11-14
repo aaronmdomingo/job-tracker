@@ -9,6 +9,7 @@ class LogIn extends React.Component {
       passWord: '',
       fetchResponse: ''
     };
+    this.logInStatus = null;
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -54,8 +55,9 @@ class LogIn extends React.Component {
   }
   render() {
     const { userName, passWord, fetchResponse } = this.state;
+    this.logInStatus = JSON.parse(localStorage.getItem('logInStatus'));
 
-    if (this.props.isLoggedIn) {
+    if (this.logInStatus) {
       return (
         <Redirect to='/' />
       );

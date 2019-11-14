@@ -23,12 +23,16 @@ class App extends React.Component {
     this.setState({
       currentUser: userObj
     });
+    localStorage.setItem('userName', JSON.stringify({ userName: userObj.userName }));
   }
   logInUser() {
     this.setState({ isLoggedIn: true });
+    localStorage.setItem('logInStatus', JSON.stringify(true));
   }
   logOutUser() {
     this.setState({ isLoggedIn: false });
+    localStorage.removeItem('logInStatus');
+    localStorage.removeItem('userName');
   }
   render() {
     return (
