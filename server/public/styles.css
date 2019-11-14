@@ -120,6 +120,10 @@ td {
   animation: 0.3s animationFadeIn ease-out !important;
 }
 
+.modal {
+  display: block;
+}
+
 .position,
 .date {
   display: none;
