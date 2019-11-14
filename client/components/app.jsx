@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import LandingPage from './landing-page';
 import DashBoard from './dashboard';
+import LogIn from './login';
 
 class App extends React.Component {
   constructor(props) {
@@ -22,51 +23,20 @@ class App extends React.Component {
     this.setState({
       currentUser: userObj
     });
+    localStorage.setItem('userName', JSON.stringify({ userName: userObj.userName }));
   }
   logInUser() {
     this.setState({ isLoggedIn: true });
+    localStorage.setItem('logInStatus', JSON.stringify(true));
   }
   logOutUser() {
     this.setState({ isLoggedIn: false });
+    localStorage.removeItem('logInStatus');
+    localStorage.removeItem('userName');
   }
-
-  // deleteStudent(id) {
-  //   fetch(`/api/grades/${id}`, { method: 'DELETE', headers: { 'Content-Type': 'application/json' } })
-  //     .then(result => result.json())
-  //     .then(result => {
-  //       let newArray = this.state.grades.filter(element => element.id !== id);
-  //       this.setState({ grades: newArray });
-  //     });
-  // }
-  // submitEdit(student) {
-  //   fetch(`/api/grades/${student.id}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(student) })
-  //     .then(result => result.json())
-  //     .then(result => {
-  //       let newArray = this.state.grades.map(element => {
-  //         return element.id === result.id ? result : element;
-  //       });
-  //       this.setState({ grades: newArray });
-  //     });
-  // }
-  // getAverageGrades() {
-  //   let totalGrade = 0;
-  //   if (!this.state.grades.length) {
-  //     return 'N/A';
-  //   } else {
-  //     this.state.grades.forEach(e => {
-  //       totalGrade += e.grade;
-  //     });
-  //     return Math.round(totalGrade / this.state.grades.length);
-  //   }
-  // }
-  // updateStudentID(student) {
-  //   this.setState({ currentStudent: student });
-  // }
   render() {
     return (
       <Router>
-        <div className="container-fluid">
-        </div>
         <Switch>
           <Route exact path='/'>
             <LandingPage setCurrentUser={this.setCurrentUser} logInUser={this.logInUser} isLoggedIn={this.state.isLoggedIn} logOutUser={this.logOutUser} currentUser={this.state.currentUser}/>
@@ -74,8 +44,11 @@ class App extends React.Component {
           <Route path='/dashboard/:user'>
             <DashBoard isLoggedIn={this.state.isLoggedIn} currentUser={this.state.currentUser} logOutUser={this.logOutUser}/>
           </Route>
+          <Route path='/login'>
+            <LogIn setCurrentUser={this.setCurrentUser} logInUser={this.logInUser} isLoggedIn={this.state.isLoggedIn} />
+          </Route>
           <Route>
-            <LandingPage setCurrentUser={this.setCurrentUser} logInUser={this.logInUser} isLoggedIn={this.state.isLoggedIn} logOutUser={this.logOutUser} currentUser={this.state.currentUser} />;
+            <LandingPage setCurrentUser={this.setCurrentUser} logInUser={this.logInUser} isLoggedIn={this.state.isLoggedIn} logOutUser={this.logOutUser} currentUser={this.state.currentUser} />
           </Route>
         </Switch>
       </Router>

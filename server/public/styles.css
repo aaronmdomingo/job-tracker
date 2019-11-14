@@ -3,26 +3,37 @@
 }
 
 .landing__page,
-.dashboard__page {
+.dashboard__page,
+.login__page {
   background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(11).jpg");
   background-position: center;
   background-size: cover;
 }
 
 .dashboard__table {
+  height: 47.5%;
   overflow: scroll;
   background-color: rgb(255, 255, 255, 0.6);
 }
 
 .table__header {
   height: 2rem !important;
+  width: 25% !important;
   position: sticky !important;
   top: 0;
+}
+
+.table {
+  margin-bottom: 0px !important;
 }
 
 .table__input {
   font-size: 1rem !important;
   height: 8rem !important;
+}
+
+.table__result {
+  width: 25% !important;
 }
 
 .btn {
@@ -39,7 +50,8 @@
 }
 
 .btn:focus,
-.btn-mini:focus {
+.btn-mini:focus,
+.close:focus {
   outline: none !important;
   box-shadow: none !important;
 }
@@ -62,14 +74,189 @@ td {
   font-size: 1.75rem !important;
 }
 
-.no__job {
+.no__job,
+.login__container {
+  transition: 0.2s;
   background-color: rgb(255, 255, 255, 0.6);
 }
 
-form {
-  height: 30% !important;
+.login__input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #000000;
+  width: 80%;
+  transition: all 0.2s;
+}
+
+.login__input:focus {
+  outline: none;
+  width: 100%;
+}
+
+.job__form {
+  height: 35% !important;
+}
+
+.form-group {
+  height: 3rem !important;
+  margin-bottom: 0.5rem !important;
 }
 
 .form-control {
   width: 65% !important;
+  height: 2rem;
+  font-size: 0.75rem !important;
+}
+
+.modal {
+  background-color: rgb(0, 0, 0, 0.4);
+}
+
+.fadeIn {
+  animation: 0.3s animationFadeIn ease-out !important;
+  display: block;
+}
+
+.position,
+.date {
+  display: none;
+}
+
+.table__buttons {
+  min-height: 8rem;
+}
+
+@keyframes animationFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes animationGrow {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .position,
+  .date {
+    display: table-cell;
+  }
+
+  .table__header,
+  .table__result {
+    width: 16.5% !important;
+  }
+
+  html {
+    font-size: 115%;
+  }
+
+  .dashboard__user {
+    width: 50% !important;
+  }
+
+  .login__container {
+    width: 50% !important;
+  }
+
+  .login__input {
+    width: 60%;
+  }
+
+  .login__input:focus {
+    outline: none;
+    width: 80%;
+  }
+
+  .form-group {
+    justify-content: center !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .icon {
+    width: 15% !important;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  html {
+    font-size: 125%;
+  }
+
+  .dashboard__table {
+    width: 80% !important;
+  }
+
+  .dashboard__user {
+    width: 40% !important;
+  }
+
+  .dashboard__header {
+    width: 80% !important;
+  }
+
+  .form-control {
+    width: 50% !important;
+  }
+
+  .icon {
+    width: 10% !important;
+  }
+
+  .login__container {
+    width: 40% !important;
+  }
+}
+
+@media screen
+and (max-width: 576px)
+and (max-height: 736px) {
+  html {
+    font-size: 80%;
+  }
+}
+
+@media only screen
+and (max-width: 1024px)
+and (max-height: 768px)
+and (orientation: landscape) {
+  html {
+    font-size: 100%
+  }
+}
+
+
+@media only screen
+and (max-width: 823px)
+and (max-height: 414px)
+and (orientation: landscape) {
+  html {
+    font-size: 80%
+  }
+
+  .job__form {
+    visibility: hidden !important;
+    position: absolute;
+    top: 0;
+  }
+
+  .dashboard__user {
+    width: 40% !important;
+  }
+
+  .dashboard__table {
+    height: 67.5% !important;
+  }
+
+  .btn__update {
+    display: none;
+  }
 }

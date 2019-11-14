@@ -12,14 +12,20 @@ class Job extends React.Component {
     this.setState({ inEdit: true });
   }
   handleDelete() {
-    const jobToBeDeleted = { id: this.props.id };
-    this.props.deleteJob(jobToBeDeleted);
+    this.props.showDeleteModal();
+    this.props.setJobId({
+      id: this.props.id,
+      company: this.props.company,
+      position: this.props.position
+    });
+    this.setState({ inEdit: false });
   }
   handleUpdate() {
     const job = {
       id: this.props.id,
       userName: this.props.userName,
       company: this.props.company,
+      position: this.props.position,
       status: this.props.status,
       comments: this.props.comments,
       date: this.props.date
@@ -29,21 +35,26 @@ class Job extends React.Component {
   }
   render() {
     const { inEdit } = this.state;
+    const date = this.props.date.split('-');
+    const filteredDate = `${date[1]}/${date[2]}/${date[0]}`;
+    const toggleEdit = () => this.setState({ inEdit: !inEdit });
 
     let button = inEdit
-      ? <th scope="col" className="h-100 d-flex flex-column justify-content-around align-items-center">
-        <button onClick={this.handleUpdate} className="btn-mini btn-primary">Update</button>
+      ? <td className="table__buttons d-flex flex-column justify-content-around align-items-center" onClick={toggleEdit}>
+        <button onClick={this.handleUpdate} className="btn__update btn-mini btn-primary">Update</button>
         <button onClick={this.handleDelete} className="btn-mini btn-danger">Delete</button>
-      </th>
-      : <th scope="col" className="h-100 d-flex flex-column justify-content-around align-items-center">
+      </td>
+      : <td className="table__buttons d-flex flex-column justify-content-around align-items-center">
         <button onClick={this.handleEdit} className="btn-mini btn-light">Edit</button>
-      </th>;
+      </td>;
 
     return (
       <tr className="table__input">
-        <th className="w-25 text-center align-middle"> { this.props.company } </th>
-        <td className="w-25 text-center align-middle"> { this.props.status } </td>
-        <td className="w-25"> { this.props.comments } </td>
+        <th className="table__result text-center align-middle"> { this.props.company } </th>
+        <td className="table__result text-center align-middle position"> { this.props.position } </td>
+        <td className="table__result text-center align-middle"> {this.props.status} </td>
+        <td className="table__result align-middle"> { this.props.comments } </td>
+        <td className="table__result text-center align-middle date"> {filteredDate} </td>
         { button }
       </tr>
     );
