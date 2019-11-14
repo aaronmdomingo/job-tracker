@@ -65,7 +65,7 @@ class LogIn extends React.Component {
       return (
         <form onSubmit={this.handleSubmit} className="login__page container-fluid h-100 w-100 p3 d-flex flex-column align-items-center justify-content-center">
           <h1 className="display-2 m-3"> Tracker </h1>
-          <div className="login__container container-fluid w-75 h-50 d-flex flex-column align-items-center justify-content-center rounded fadeIn">
+          <div className="login__container container-fluid w-75 h-50 d-flex flex-column align-items-center justify-content-end rounded fadeIn">
             <div className="container-fluid h-25 w-100 d-flex justify-content-center align-items-center">
               <input type="text" value={userName} name="username" onChange={this.handleChange} placeholder="Username" className="login__input text-center" autoComplete="off" required />
             </div>
