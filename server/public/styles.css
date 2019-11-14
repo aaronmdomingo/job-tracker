@@ -118,7 +118,6 @@ td {
 
 .fadeIn {
   animation: 0.3s animationFadeIn ease-out !important;
-  display: block;
 }
 
 .position,
@@ -149,6 +148,10 @@ td {
 }
 
 @media screen and (min-width: 768px) {
+  html {
+    font-size: 115%;
+  }
+
   .position,
   .date {
     display: table-cell;
@@ -157,10 +160,6 @@ td {
   .table__header,
   .table__result {
     width: 16.5% !important;
-  }
-
-  html {
-    font-size: 115%;
   }
 
   .dashboard__user {
