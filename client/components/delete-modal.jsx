@@ -22,7 +22,7 @@ class DeleteModal extends React.Component {
     const { visible } = this.state;
 
     if (visible) {
-      modalClass = 'fadeIn';
+      modalClass = 'fadeIn modal';
     }
 
     return (
