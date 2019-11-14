@@ -16,6 +16,10 @@
   background-color: rgb(255, 255, 255, 0.6);
 }
 
+.header__title {
+  cursor: pointer;
+}
+
 .table__header {
   height: 2rem !important;
   width: 25% !important;
