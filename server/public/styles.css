@@ -156,7 +156,7 @@ td {
   }
 
   html {
-    font-size: 125%;
+    font-size: 115%;
   }
 
   .dashboard__user {
@@ -187,6 +187,10 @@ td {
 }
 
 @media screen and (min-width: 1200px) {
+  html {
+    font-size: 125%;
+  }
+
   .dashboard__table {
     width: 80% !important;
   }
@@ -205,6 +209,10 @@ td {
 
   .icon {
     width: 10% !important;
+  }
+
+  .login__container {
+    width: 40% !important;
   }
 }
 
