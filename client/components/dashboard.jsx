@@ -16,6 +16,9 @@ class DashBoard extends React.Component {
       showDeleteModal: false,
       isEmpty: false
     };
+    this.logInStatus = null;
+    this.userName = null;
+    this.userObject = null;
     this.addJob = this.addJob.bind(this);
     this.deleteJob = this.deleteJob.bind(this);
     this.updateJob = this.updateJob.bind(this);
@@ -25,7 +28,7 @@ class DashBoard extends React.Component {
     this.hideDeleteModal = this.hideDeleteModal.bind(this);
   }
   componentDidMount() {
-    if (this.props.isLoggedIn) {
+    if (this.logInStatus) {
       this.getJobs();
       this.scrollToBottom();
     }
@@ -36,7 +39,7 @@ class DashBoard extends React.Component {
     }
   }
   getJobs() {
-    fetch(`/api/jobs.php?userName=${this.props.currentUser.userName}`)
+    fetch(`/api/jobs.php?userName=${this.userName || this.props.currentUser.userName}`)
       .then(result => result.json())
       .then(result => {
         if (!result.length) {
@@ -94,6 +97,9 @@ class DashBoard extends React.Component {
   }
   render() {
     const { jobArray, currentJob, showDeleteModal, jobId, isEmpty } = this.state;
+    this.logInStatus = JSON.parse(localStorage.getItem('logInStatus'));
+    this.userObject = JSON.parse(localStorage.getItem('userName'));
+    this.userName = this.userObject ? this.userObject.userName : '';
 
     let modalElement = showDeleteModal ? <DeleteModal jobId={jobId} hideDeleteModal={this.hideDeleteModal} deleteJob={this.deleteJob} /> : '';
     let tableElement = isEmpty
@@ -102,15 +108,15 @@ class DashBoard extends React.Component {
       </div>
       : <Jobtable jobArray={jobArray} initiateUpdate={this.initiateUpdate} showDeleteModal={this.showDeleteModal} setJobId={this.setJobId} />;
 
-    if (this.props.isLoggedIn) {
+    if (this.logInStatus) {
       return (
         <div className="dashboard__page container-fluid h-100 d-flex flex-column justify-content-around align-items-center">
           <Header logOutUser={this.props.logOutUser} />
-          <h3 className="dashboard__user w-75 d-flex justify-content-center align-items-center border-bottom border-dark">{this.props.currentUser.userName}</h3>
+          <h3 className="dashboard__user w-75 d-flex justify-content-center align-items-center border-bottom border-dark">{this.userName || this.props.currentUser.userName}</h3>
           <div className="dashboard__table w-100 rounded" id="message--container">
             {tableElement}
           </div>
-          <JobForm currentUser={this.props.currentUser} addJob={this.addJob} updateJob={this.updateJob} currentJob={currentJob} />
+          <JobForm currentUser={this.userObject || this.props.currentUser} addJob={this.addJob} updateJob={this.updateJob} currentJob={currentJob} />
           {modalElement}
         </div>
       );
