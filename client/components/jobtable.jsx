@@ -8,8 +8,8 @@ class JobTable extends React.Component {
 
     return (
       <table className="table table-striped table-borderless table-hover h-100 w-100 fadeIn">
-        <thead className="thead-dark">
-          <tr>
+        <thead className="thead-dark rounded-top">
+          <tr className="rounded-top">
             <th className="text-center table__header"> Company </th>
             <th className="text-center table__header position"> Position </th>
             <th className="text-center table__header"> Status </th>
