@@ -107,7 +107,7 @@ td {
 
 .form-group {
   height: 3rem !important;
-  margin-bottom: 0.5rem !important;
+  margin-bottom: 0.25rem !important;
 }
 
 .form-control {
@@ -189,7 +189,6 @@ td {
 
   .form-group {
     justify-content: center !important;
-    margin-bottom: 0.25rem !important;
   }
 
   .icon {
@@ -264,7 +263,8 @@ and (orientation: landscape) {
   }
 
   .dashboard__table {
-    height: 67.5% !important;
+    width: 90% !important;
+    height: 65% !important;
   }
 
   .btn__update {
