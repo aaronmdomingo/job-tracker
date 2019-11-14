@@ -107,7 +107,7 @@ td {
 
 .form-group {
   height: 3rem !important;
-  margin-bottom: 0.25rem !important;
+  margin-bottom: 0.10rem !important;
 }
 
 .form-control {
@@ -228,12 +228,12 @@ td {
 
 @media screen
 and (max-width: 576px)
-and (max-height: 736px) {
+and (max-height: 667px) {
   html {
-    font-size: 95%;
+    font-size: 90%;
   }
   .form-group {
-    margin: 0.05rem !important;
+    margin: 0rem !important;
   }
 }
 
@@ -253,6 +253,10 @@ and (max-height: 414px)
 and (orientation: landscape) {
   html {
     font-size: 80%
+  }
+
+  .dashboard__page {
+    justify-content: flex-start !important;
   }
 
   .job__form {
