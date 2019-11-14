@@ -5,8 +5,10 @@
   require_once('db-connection.php');
   startup();
 
-  $userName = $_GET['userName'];
-  $passWord = $_GET['passWord'];
+  $userNameRaw = $_GET['userName'];
+  $passWordRaw = $_GET['passWord'];
+  $userName = str_replace("'","\'", $userNameRaw);
+  $passWord = str_replace("'","\'", $passWordRaw);
 
   $query = "SELECT * FROM `user` WHERE `user_name` = '$userName' ";
 
