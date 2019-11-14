@@ -12,7 +12,7 @@ class LandingPage extends React.Component {
   }
   logInAsGuest() {
     const guestObject = {
-      userName: 'guest'
+      userName: 'Guest'
     };
     this.props.setCurrentUser(guestObject);
     this.props.logInUser();
