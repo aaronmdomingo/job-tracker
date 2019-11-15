@@ -107,7 +107,7 @@ td {
 
 .form-group {
   height: 3rem !important;
-  margin-bottom: 0.10rem !important;
+  margin-bottom: 0 !important;
 }
 
 .form-control {
@@ -157,7 +157,7 @@ td {
 
 @media screen and (min-width: 768px) {
   html {
-    font-size: 115%;
+    font-size: 110%;
   }
 
   .position,
@@ -196,9 +196,16 @@ td {
   }
 }
 
-@media screen and (min-width: 1200px) {
+
+@media screen and (min-width: 1024px) {
   html {
-    font-size: 125%;
+    font-size: 115%;
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  html {
+    font-size: 120%;
   }
 
   .dashboard__table {
@@ -253,10 +260,6 @@ and (max-height: 414px)
 and (orientation: landscape) {
   html {
     font-size: 80%
-  }
-
-  .dashboard__page {
-    justify-content: flex-start !important;
   }
 
   .job__form {
