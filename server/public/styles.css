@@ -237,10 +237,7 @@ td {
 and (max-width: 576px)
 and (max-height: 667px) {
   html {
-    font-size: 90%;
-  }
-  .form-group {
-    margin: 0rem !important;
+    font-size: 95%;
   }
 }
 
