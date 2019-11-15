@@ -110,7 +110,7 @@ class DashBoard extends React.Component {
 
     if (this.logInStatus) {
       return (
-        <div className="dashboard__page container-fluid h-100 d-flex flex-column justify-content-around align-items-center">
+        <div className="dashboard__page container-fluid h-100 d-flex flex-column justify-content-start align-items-center">
           <Header logOutUser={this.props.logOutUser} />
           <h3 className="dashboard__user w-75 d-flex justify-content-center align-items-center border-bottom border-dark">{this.userName || this.props.currentUser.userName}</h3>
           <div className="dashboard__table w-100 rounded" id="message--container">

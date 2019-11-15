@@ -17,7 +17,7 @@ class Header extends React.Component {
   render() {
     return (
       <div className= "dashboard__header container-fluid p-0 d-flex justify-content-between align-items-center">
-        <h2 className="display-4 header__title" onClick={this.goHome}>Tracker</h2>
+        <h2 className="display-4 header__title m-0" onClick={this.goHome}>Tracker</h2>
         <button className="btn btn-light" onClick={this.logOutUser}>Log out</button>
       </div>
     );
