@@ -12,6 +12,7 @@ A full-stack LAMP CMS application with CRUD functionality that allow users to ke
 6. React Router
 7. PHP
 8. MySQL
+9. AWS EC2
 
 ## Live Demo
 
@@ -28,3 +29,37 @@ Try the application live at https://job-tracker.aarondomingo.com
 ## Preview
 
 ![](/server/public/demo/tracker.gif)
+
+## Development
+
+#### System Requirements
+
+- NPM 6 or higher
+- MySQL 7 or higher
+
+#### Getting Started
+
+1. Clone the repository.
+
+    ```shell
+    git clone https://github.com/aaronmdomingo/job-tracker.git
+    cd job-tracker
+    ```
+
+1. Install all dependencies with NPM.
+
+    ```shell
+    npm install
+    ```
+
+1. Import the database to MySQL
+
+    ```shell
+    database/job-tracker.sql
+    ```
+
+1. Start the project. Once started you can view the application by opening http://localhost:3000 in your browser.
+
+    ```shell
+    npm run dev
+    ```
