@@ -137,6 +137,10 @@ td {
   min-height: 8rem;
 }
 
+.details__content {
+  height: 70vh !important;
+}
+
 @keyframes animationFadeIn {
   0% {
     opacity: 0;
@@ -276,5 +280,9 @@ and (orientation: landscape) {
 
   .btn__update {
     display: none;
+  }
+
+  .details__content {
+    height: 80vh !important;
   }
 }
