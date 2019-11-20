@@ -17,7 +17,7 @@
 .dashboard__table {
   height: 47.5%;
   overflow: scroll;
-  background-color: rgb(255, 255, 255, 0.6);
+  background-color: rgb(255, 255, 255, 0.8);
 }
 
 .header__title {
