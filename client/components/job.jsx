@@ -7,6 +7,7 @@ class Job extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
+    this.handleDetails = this.handleDetails.bind(this);
   }
   handleEdit() {
     this.setState({ inEdit: true });
@@ -33,6 +34,20 @@ class Job extends React.Component {
     this.props.initiateUpdate(job);
     this.setState({ inEdit: false });
   }
+  handleDetails() {
+    const job = {
+      id: this.props.id,
+      userName: this.props.userName,
+      company: this.props.company,
+      position: this.props.position,
+      status: this.props.status,
+      comments: this.props.comments,
+      date: this.props.date
+    };
+    this.props.showDetailsModal();
+    this.props.setJobId(job);
+    this.setState({ inEdit: false });
+  }
   render() {
     const { inEdit } = this.state;
     const date = this.props.date.split('-');
@@ -50,11 +65,11 @@ class Job extends React.Component {
 
     return (
       <tr className="table__input">
-        <th className="table__result text-center align-middle"> { this.props.company } </th>
-        <td className="table__result text-center align-middle position"> { this.props.position } </td>
-        <td className="table__result text-center align-middle"> {this.props.status} </td>
-        <td className="table__result align-middle"> { this.props.comments } </td>
-        <td className="table__result text-center align-middle date"> {filteredDate} </td>
+        <th className="table__result text-center align-middle" onClick={this.handleDetails}> { this.props.company } </th>
+        <td className="table__result text-center align-middle position" onClick={this.handleDetails}> { this.props.position } </td>
+        <td className="table__result text-center align-middle" onClick={this.handleDetails}> {this.props.status} </td>
+        <td className="table__result align-middle" onClick={this.handleDetails}> { this.props.comments } </td>
+        <td className="table__result text-center align-middle date" onClick={this.handleDetails}> {filteredDate} </td>
         { button }
       </tr>
     );
