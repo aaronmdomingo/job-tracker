@@ -5,6 +5,7 @@ import Header from './header';
 import Jobtable from './jobtable';
 import JobForm from './jobform';
 import DeleteModal from './delete-modal';
+import DetailsModal from './details-modal';
 
 class DashBoard extends React.Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class DashBoard extends React.Component {
       currentJob: null,
       jobId: null,
       showDeleteModal: false,
+      showDetailsModal: false,
       isEmpty: false
     };
     this.logInStatus = null;
@@ -26,6 +28,8 @@ class DashBoard extends React.Component {
     this.setJobId = this.setJobId.bind(this);
     this.showDeleteModal = this.showDeleteModal.bind(this);
     this.hideDeleteModal = this.hideDeleteModal.bind(this);
+    this.showDetailsModal = this.showDetailsModal.bind(this);
+    this.hideDetailsModal = this.hideDetailsModal.bind(this);
   }
   componentDidMount() {
     if (this.logInStatus) {
@@ -95,18 +99,25 @@ class DashBoard extends React.Component {
   hideDeleteModal() {
     this.setState({ showDeleteModal: false });
   }
+  showDetailsModal() {
+    this.setState({ showDetailsModal: true });
+  }
+  hideDetailsModal() {
+    this.setState({ showDetailsModal: false });
+  }
   render() {
-    const { jobArray, currentJob, showDeleteModal, jobId, isEmpty } = this.state;
+    const { jobArray, currentJob, showDeleteModal, showDetailsModal, jobId, isEmpty } = this.state;
     this.logInStatus = JSON.parse(localStorage.getItem('logInStatus'));
     this.userObject = JSON.parse(localStorage.getItem('userName'));
     this.userName = this.userObject ? this.userObject.userName : '';
 
-    let modalElement = showDeleteModal ? <DeleteModal jobId={jobId} hideDeleteModal={this.hideDeleteModal} deleteJob={this.deleteJob} /> : '';
+    let detailsModal = showDetailsModal ? <DetailsModal jobId={jobId} hideDetailsModal={this.hideDetailsModal} /> : '';
+    let deleteModal = showDeleteModal ? <DeleteModal jobId={jobId} hideDeleteModal={this.hideDeleteModal} deleteJob={this.deleteJob} /> : '';
     let tableElement = isEmpty
       ? <div className="no__job rounded w-100 h-100 d-flex align-items-center justify-content-center fadeIn">
         <h3> Currently no jobs listed </h3>
       </div>
-      : <Jobtable jobArray={jobArray} initiateUpdate={this.initiateUpdate} showDeleteModal={this.showDeleteModal} setJobId={this.setJobId} />;
+      : <Jobtable jobArray={jobArray} initiateUpdate={this.initiateUpdate} showDeleteModal={this.showDeleteModal} showDetailsModal={this.showDetailsModal} setJobId={this.setJobId} />;
 
     if (this.logInStatus) {
       return (
@@ -117,7 +128,8 @@ class DashBoard extends React.Component {
             {tableElement}
           </div>
           <JobForm currentUser={this.userObject || this.props.currentUser} addJob={this.addJob} updateJob={this.updateJob} currentJob={currentJob} />
-          {modalElement}
+          {deleteModal}
+          {detailsModal}
         </div>
       );
     } else {

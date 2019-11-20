@@ -33,6 +33,7 @@ class JobTable extends React.Component {
                   deleteJob={this.props.deleteJob}
                   initiateUpdate={this.props.initiateUpdate}
                   showDeleteModal={this.props.showDeleteModal}
+                  showDetailsModal={this.props.showDetailsModal}
                   setJobId={this.props.setJobId}
                 />
               );
