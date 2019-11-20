@@ -17,7 +17,7 @@
 .dashboard__table {
   height: 47.5%;
   overflow: scroll;
-  background-color: rgb(255, 255, 255, 0.6);
+  background-color: rgb(255, 255, 255, 0.8);
 }
 
 .header__title {
@@ -135,6 +135,10 @@ td {
 
 .table__buttons {
   min-height: 8rem;
+}
+
+.details__content {
+  height: 70vh !important;
 }
 
 @keyframes animationFadeIn {
@@ -276,5 +280,9 @@ and (orientation: landscape) {
 
   .btn__update {
     display: none;
+  }
+
+  .details__content {
+    height: 80vh !important;
   }
 }
