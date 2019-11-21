@@ -30,9 +30,10 @@ class DetailsModal extends React.Component {
   }
   render() {
     const { commentHistoryArr } = this.state;
-    let date, filteredDate, element;
+    let dateWithTime, date, filteredDate, element;
     if (this.props.jobId.date) {
-      date = this.props.jobId.date.split('-');
+      dateWithTime = this.props.jobId.date.split(' ')[0];
+      date = dateWithTime.split('-');
       filteredDate = `${date[1]}/${date[2]}/${date[0]}`;
     }
 

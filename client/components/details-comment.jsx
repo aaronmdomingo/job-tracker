@@ -10,8 +10,10 @@ class CommentDetail extends React.Component {
   }
   render() {
     const { comment } = this.props;
-    let date = comment.date.split('-');
-    let filteredDate = `${date[1]}/${date[2]}`;
+
+    const dateWithTime = comment.date.split(' ')[0];
+    const date = dateWithTime.split('-');
+    const filteredDate = `${date[1]}/${date[2]}`;
 
     return (
       <div className="details__history_comment h-25 w-100 d-flex justify-content-center align-items-center">
