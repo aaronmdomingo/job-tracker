@@ -1,19 +1,47 @@
 import React from 'react';
+import CommentDetail from './details-comment';
 
 class DetailsModal extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { commentHistoryArr: [] };
+    this.state = {
+      commentHistoryArr: [],
+      isEmpty: false
+    };
     this.handleClose = this.handleClose.bind(this);
+  }
+  componentDidMount() {
+    this.getAllComments();
+  }
+  getAllComments() {
+    fetch(`/api/comments.php?id=${this.props.jobId.id}`)
+      .then(result => result.json())
+      .then(result => {
+        if (!result.length) {
+          this.setState({ isEmpty: true });
+        } else {
+          this.setState({ isEmpty: false });
+          this.setState({ commentHistoryArr: result });
+        }
+      });
   }
   handleClose() {
     this.props.hideDetailsModal();
   }
   render() {
-    let date, filteredDate;
+    const { commentHistoryArr } = this.state;
+    let dateWithTime, date, filteredDate, element;
     if (this.props.jobId.date) {
-      date = this.props.jobId.date.split('-');
+      dateWithTime = this.props.jobId.date.split(' ')[0];
+      date = dateWithTime.split('-');
       filteredDate = `${date[1]}/${date[2]}/${date[0]}`;
+    }
+
+    if (commentHistoryArr) {
+      element =
+      commentHistoryArr.map(element => {
+        return <CommentDetail key={element.id} comment={element} />;
+      });
     }
 
     return (
@@ -42,9 +70,11 @@ class DetailsModal extends React.Component {
               <div className="w-100 d-flex justify-content-around align-items-center font-weight-bold">
                 Comment History
               </div>
-              <div className="h-75 w-100 d-flex justify-content-around align-items-center border border-dark rounded">
-                <div className="w-25 d-flex justify-content-center align-items-center">Position</div>
-                <div className="w-75 d-flex justify-content-center align-items-center">{this.props.jobId.comments}</div>
+              <div className="details__history_container w-100 border border-dark rounded">
+                { element }
+              </div>
+              <div className="w-100 d-flex justify-content-center align-items-center">
+                <button type="button" className="btn-mini btn-secondary" onClick={this.handleClose}>Close</button>
               </div>
             </div>
           </div>

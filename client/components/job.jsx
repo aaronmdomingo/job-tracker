@@ -28,7 +28,6 @@ class Job extends React.Component {
       company: this.props.company,
       position: this.props.position,
       status: this.props.status,
-      comments: this.props.comments,
       date: this.props.date
     };
     this.props.initiateUpdate(job);
@@ -50,7 +49,8 @@ class Job extends React.Component {
   }
   render() {
     const { inEdit } = this.state;
-    const date = this.props.date.split('-');
+    const dateWithTime = this.props.date.split(' ')[0];
+    const date = dateWithTime.split('-');
     const filteredDate = `${date[1]}/${date[2]}/${date[0]}`;
     const toggleEdit = () => this.setState({ inEdit: !inEdit });
 

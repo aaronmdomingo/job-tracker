@@ -26,7 +26,6 @@ class JobForm extends React.Component {
         company: this.props.currentJob.company,
         position: this.props.currentJob.position,
         status: this.props.currentJob.status,
-        comments: this.props.currentJob.comments,
         userName: this.props.currentJob.userName,
         date: this.props.currentJob.date,
         jobID: this.props.currentJob.id,
