@@ -26,7 +26,6 @@ class JobForm extends React.Component {
         company: this.props.currentJob.company,
         position: this.props.currentJob.position,
         status: this.props.currentJob.status,
-        comments: this.props.currentJob.comments,
         userName: this.props.currentJob.userName,
         date: this.props.currentJob.date,
         jobID: this.props.currentJob.id,
@@ -63,8 +62,24 @@ class JobForm extends React.Component {
       status: this.state.status,
       comments: this.state.comments
     };
-    this.props.addJob(newEntry);
-    this.handleCancel();
+    if (this.checkInputs(newEntry)) {
+      this.props.addJob(newEntry);
+      this.handleCancel();
+    }
+  }
+
+  checkInputs(formObj) {
+    const formObjectVal = Object.values(formObj);
+    const formVals = formObjectVal.filter(element => {
+      if (element.trim().length) {
+        return element;
+      }
+    });
+    if (formVals.length < formObjectVal.length) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
   submitUpdate(event) {
