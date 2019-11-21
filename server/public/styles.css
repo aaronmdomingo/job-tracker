@@ -146,7 +146,7 @@ td {
 }
 
 .details__history_container {
-  height: 65% !important;
+  height: 50vh !important;
   overflow: auto;
 }
 
