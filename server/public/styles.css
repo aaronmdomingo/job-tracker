@@ -142,11 +142,11 @@ td {
 }
 
 .details__content {
-  height: 80vh !important;
+  height: 60vh !important;
 }
 
 .details__history_container {
-  height: 50vh !important;
+  height: 30vh !important;
   overflow: auto;
 }
 
@@ -227,6 +227,15 @@ td {
 
   .icon {
     width: 15% !important;
+  }
+
+  .details__content {
+    height: 80vh !important;
+  }
+
+  .details__history_container {
+    height: 50vh !important;
+    overflow: auto;
   }
 }
 
@@ -314,5 +323,10 @@ and (orientation: landscape) {
 
   .details__content {
     height: 90vh !important;
+  }
+
+  .details__history_container {
+    height: 40vh !important;
+    overflow: auto;
   }
 }
