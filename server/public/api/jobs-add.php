@@ -6,7 +6,7 @@
     $position = $bodyData["position"];
     $status = $bodyData["status"];
     $comments = $bodyData["comments"];
-    $date = date("Y-m-d");
+    $date = date("Y-m-d H:i:s");
 
     $filter_user_name = str_replace("'","\'", $user_name);
     $filter_company = str_replace("'","\'", $company);
@@ -54,7 +54,7 @@
             throw new Exception ('Adding entry failed');
         } else {
             $output = [
-            "success" => true
+                "success" => true
             ];
             $json_output = json_encode($output);
             print($json_output);

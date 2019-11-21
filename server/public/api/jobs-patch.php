@@ -5,7 +5,7 @@
     $position = $bodyData["position"];
     $status = $bodyData["status"];
     $comments = $bodyData["comments"];
-    $date = $bodyData["date"];
+    $date = date("Y-m-d H:i:s");
     $id = $bodyData["id"];
 
     $filter_user_name = str_replace("'","\'", $user_name);
@@ -17,7 +17,7 @@
     $getQuery = "SELECT * FROM `user` WHERE `user`.`user_name` = '$filter_user_name' ";
     $patchQuery = "UPDATE `jobs`
                 SET `company` = '$filter_company', `status` = '$filter_status',
-                    `comments` = '$filter_comments', `position` = '$filter_position'
+                    `position` = '$filter_position'
                     WHERE `id` = '$id' ";
 
     $getResult = mysqli_query($conn, $getQuery);
@@ -31,11 +31,21 @@
     if(!$patchResult) {
         throw new Exception('Adding Entry failed');
     } else {
-        $output = [
-            "success" => true
-        ];
-        $json_output = json_encode($output);
-        print($json_output);
+
+        $postCommentQuery = "INSERT INTO `comments` (`job_id`, `date`, `message`)
+                            VALUES ('$id', '$date', '$filter_comments') ";
+
+        $postCommentResult = mysqli_query($conn, $postCommentQuery);
+
+        if (!$postCommentResult) {
+            throw new Exception('Updating Entry failed');
+        } else {
+            $output = [
+                "success" => true
+            ];
+            $json_output = json_encode($output);
+            print($json_output);
+        }
     }
 
 
