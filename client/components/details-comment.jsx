@@ -20,8 +20,8 @@ class CommentDetail extends React.Component {
         <div className="details__history_date h-100 d-flex justify-content-center align-items-center font-weight-bold">{filteredDate}</div>
         <div className="details__history_message h-100 d-flex align-items-center p-2">
           {comment.message}
-          <span className="details__history_delete text-danger" onClick={this.handleDelete}>&times;</span>
         </div>
+        <div className="details__history_delete text-danger d-flex justify-content-center align-items-center" onClick={this.handleDelete}><span>&times;</span></div>
       </div>
     );
   }
