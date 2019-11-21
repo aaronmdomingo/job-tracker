@@ -6,7 +6,7 @@ class CommentDetail extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
   }
   handleDelete() {
-
+    this.props.handleDelete({ id: this.props.comment.id });
   }
   render() {
     const { comment } = this.props;
@@ -20,7 +20,7 @@ class CommentDetail extends React.Component {
         <div className="details__history_date h-100 d-flex justify-content-center align-items-center font-weight-bold">{filteredDate}</div>
         <div className="details__history_message h-100 d-flex align-items-center p-2">
           {comment.message}
-          <span className="details__history_delete text-danger">&times;</span>
+          <span className="details__history_delete text-danger" onClick={this.handleDelete}>&times;</span>
         </div>
       </div>
     );
