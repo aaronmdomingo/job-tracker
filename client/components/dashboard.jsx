@@ -24,6 +24,7 @@ class DashBoard extends React.Component {
     this.addJob = this.addJob.bind(this);
     this.deleteJob = this.deleteJob.bind(this);
     this.updateJob = this.updateJob.bind(this);
+    this.getJobs = this.getJobs.bind(this);
     this.initiateUpdate = this.initiateUpdate.bind(this);
     this.setJobId = this.setJobId.bind(this);
     this.showDeleteModal = this.showDeleteModal.bind(this);
@@ -111,7 +112,7 @@ class DashBoard extends React.Component {
     this.userObject = JSON.parse(localStorage.getItem('userName'));
     this.userName = this.userObject ? this.userObject.userName : '';
 
-    let detailsModal = showDetailsModal ? <DetailsModal jobId={jobId} hideDetailsModal={this.hideDetailsModal} /> : '';
+    let detailsModal = showDetailsModal ? <DetailsModal jobId={jobId} hideDetailsModal={this.hideDetailsModal} getJobs={this.getJobs}/> : '';
     let deleteModal = showDeleteModal ? <DeleteModal jobId={jobId} hideDeleteModal={this.hideDeleteModal} deleteJob={this.deleteJob} /> : '';
     let tableElement = isEmpty
       ? <div className="no__job rounded w-100 h-100 d-flex align-items-center justify-content-center fadeIn">

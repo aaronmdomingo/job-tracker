@@ -9,6 +9,7 @@ class DetailsModal extends React.Component {
       isEmpty: false
     };
     this.handleClose = this.handleClose.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
   componentDidMount() {
     this.getAllComments();
@@ -28,8 +29,19 @@ class DetailsModal extends React.Component {
   handleClose() {
     this.props.hideDetailsModal();
   }
+  handleDelete(commentObj) {
+    fetch(`/api/comments.php`, { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(commentObj) })
+      .then(result => result.json())
+      .then(result => {
+        if (result.success) {
+          this.getAllComments();
+          this.props.getJobs();
+        }
+      })
+      .catch(error => alert(error));
+  }
   render() {
-    const { commentHistoryArr } = this.state;
+    const { commentHistoryArr, isEmpty } = this.state;
     let dateWithTime, date, filteredDate, element;
     if (this.props.jobId.date) {
       dateWithTime = this.props.jobId.date.split(' ')[0];
@@ -37,11 +49,18 @@ class DetailsModal extends React.Component {
       filteredDate = `${date[1]}/${date[2]}/${date[0]}`;
     }
 
-    if (commentHistoryArr) {
+    if (commentHistoryArr.length) {
       element =
       commentHistoryArr.map(element => {
-        return <CommentDetail key={element.id} comment={element} />;
+        return <CommentDetail key={element.id} comment={element} handleDelete={this.handleDelete}/>;
       });
+    }
+
+    if (isEmpty) {
+      element =
+        <div className="container w-100 h-100 d-flex justify-content-center align-items-center">
+          <h3> No Comments </h3>
+        </div>;
     }
 
     return (
