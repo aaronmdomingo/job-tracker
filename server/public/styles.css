@@ -137,6 +137,10 @@ td {
   min-height: 8rem;
 }
 
+.details__modal {
+  font-size: 0.75rem !important;
+}
+
 .details__content {
   height: 80vh !important;
 }
@@ -309,6 +313,6 @@ and (orientation: landscape) {
   }
 
   .details__content {
-    height: 80vh !important;
+    height: 90vh !important;
   }
 }
