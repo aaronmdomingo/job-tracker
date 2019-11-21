@@ -28,7 +28,6 @@ class Job extends React.Component {
       company: this.props.company,
       position: this.props.position,
       status: this.props.status,
-      comments: this.props.comments,
       date: this.props.date
     };
     this.props.initiateUpdate(job);
