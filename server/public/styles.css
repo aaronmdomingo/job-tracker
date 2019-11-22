@@ -42,6 +42,8 @@
 
 .table__result {
   width: 25% !important;
+  cursor: pointer;
+  padding: 0.25rem !important;
 }
 
 .btn {
@@ -167,6 +169,11 @@ td {
   height: 100%;
   font-size: 1.5rem;
   cursor: pointer;
+}
+
+.sub__edit,
+.sub__edit-message {
+  display: none;
 }
 
 @keyframes animationFadeIn {
@@ -297,7 +304,7 @@ and (max-width: 823px)
 and (max-height: 414px)
 and (orientation: landscape) {
   html {
-    font-size: 80%
+    font-size: 90%
   }
 
   .job__form {
@@ -315,16 +322,26 @@ and (orientation: landscape) {
     height: 65% !important;
   }
 
-  .btn__update {
+  .main__edit,
+  .btn__update,
+  .btn__delete {
     display: none;
   }
 
   .details__content {
-    height: 90vh !important;
+    height: 85vh !important;
   }
 
   .details__history_container {
-    height: 40vh !important;
+    height: 35vh !important;
     overflow: auto;
   }
+
+
+  .sub__edit,
+  .sub__edit-message {
+    display: inline-block;
+    font-size: 0.75rem !important;
+  }
+
 }
