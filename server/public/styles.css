@@ -171,8 +171,7 @@ td {
   cursor: pointer;
 }
 
-.sub__edit,
-.sub__edit-message {
+.rotate__message {
   display: none;
 }
 
@@ -337,9 +336,7 @@ and (orientation: landscape) {
     overflow: auto;
   }
 
-
-  .sub__edit,
-  .sub__edit-message {
+  .rotate__message {
     display: inline-block;
     font-size: 0.75rem !important;
   }

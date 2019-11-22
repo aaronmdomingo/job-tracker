@@ -58,11 +58,11 @@ class Job extends React.Component {
       ? <td className="table__buttons d-flex flex-column justify-content-around align-items-center" onClick={toggleEdit}>
         <button onClick={this.handleUpdate} className="btn__update btn-mini btn-primary">Update</button>
         <button onClick={this.handleDelete} className="btn__delete btn-mini btn-danger">Delete</button>
-        <h6 className="sub__edit-message"> Rotate to Edit </h6>
+        <h6 className="rotate__message"> Rotate to Edit </h6>
       </td>
       : <td className="table__buttons d-flex flex-column justify-content-around align-items-center">
         <button onClick={this.handleEdit} className="btn-mini btn-light main__edit">Edit</button>
-        <h6 className="sub__edit-message"> Rotate to Edit </h6>
+        <h6 className="rotate__message"> Rotate to Edit </h6>
       </td>;
 
     return (
