@@ -280,19 +280,19 @@ td {
   }
 }
 
-@media screen
-and (max-width: 576px)
-and (max-height: 667px) {
-  html {
-    font-size: 95%;
-  }
-}
-
 @media only screen
-and (max-height: 768px)
+and (max-height: 767px)
 and (orientation: landscape) {
   #root {
     height: 150vh;
+  }
+
+  .details__content {
+    height: 90vh !important;
+  }
+
+  .details__history_container {
+    height: 40vh !important;
   }
 }
 
