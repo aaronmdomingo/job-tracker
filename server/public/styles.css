@@ -289,11 +289,10 @@ and (max-height: 667px) {
 }
 
 @media only screen
-and (max-width: 1024px)
 and (max-height: 768px)
 and (orientation: landscape) {
-  html {
-    font-size: 100%
+  #root {
+    height: 150vh;
   }
 }
 
@@ -302,6 +301,9 @@ and (orientation: landscape) {
 and (max-width: 823px)
 and (max-height: 414px)
 and (orientation: landscape) {
+  #root {
+    height: 100vh;
+  }
   html {
     font-size: 90%
   }
