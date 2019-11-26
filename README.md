@@ -25,6 +25,8 @@ Try the application live at https://job-tracker.aarondomingo.com
 3. User can update any jobs they have entered before
 4. User can delete any jobs they have entered before
 5. User can log in and view information specific to them
+6. User can see a comment history when a table row is clicked
+7. User can delete a previous comment for a specific job
 
 ## Preview
 
