@@ -1,6 +1,6 @@
 # Job Tracker
 
-A full-stack LAMP CMS application with CRUD functionality that allow users to keep track of the jobs they have applied for.
+A full-stack mobile-first LAMP CMS application with CRUD functionality that allow users to keep track of the jobs they have applied for.
 
 ## Technologies Used
 
